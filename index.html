@@ -1645,7 +1645,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 
 /* Calendario: conservar escala del botánico, corregir su centro óptico y dar aire a TODO el bloque siguiente. */
 .hero-botanical-divider{margin-bottom:2.15rem!important;}
-.hero-botanical-divider img{width:89.6%!important;transform:translateX(3.2%)!important;transform-origin:center center!important;}
+.hero-botanical-divider img{width:89.6%!important;transform:translateX(3.8%)!important;transform-origin:center center!important;}
 
 /* Vestimenta: siluetas formales limpias; la camisa es una masa, no líneas decorativas. */
 .dress-icon{width:5.7rem!important;height:7rem!important;}
@@ -1703,6 +1703,27 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
  [data-template-id="song-section"] .feature-illustration.is-visible .music-note-a,
  [data-template-id="song-section"] .feature-illustration.is-visible .music-note-b{animation:none!important;}
 }
+</style>
+
+
+<style id="v18-7-ultimo-tuneo">
+/* V18.7 — tres ajustes puntuales; resto congelado. */
+/* Calendario: desplazamiento horizontal mínimo a la derecha, sin cambiar escala ni eje vertical. */
+.hero-botanical-divider img{transform:translateX(3.8%)!important;}
+
+/* Vestimenta: smoking sin cabeza, con separación inequívoca entre chaqueta y pantalón. */
+.dress-icon .tux-jacket,.dress-icon .tux-lapel,.dress-icon .tux-bow,.dress-icon .tux-pants{fill:#4F5F4B!important;stroke:none!important;}
+.dress-icon .tux-shirt{fill:#F7F3EA!important;stroke:none!important;}
+
+/* Música: el icono REAL junto al título usa el mismo ritmo vivo del regalo. */
+.music-title-icon{animation:v187MusicGiftRhythm 2.35s ease-in-out infinite!important;transform-origin:center bottom!important;will-change:transform;}
+@keyframes v187MusicGiftRhythm{
+  0%,100%{transform:translateY(0) rotate(0) scale(1)}
+  25%{transform:translateY(-6px) rotate(-6deg) scale(1.08)}
+  43%{transform:translateY(0) rotate(6deg) scale(1.03)}
+  62%{transform:translateY(-4px) rotate(-3deg) scale(1.07)}
+}
+@media(prefers-reduced-motion:reduce){.music-title-icon{animation:none!important;}}
 </style>
 
 </head>
@@ -1876,12 +1897,12 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
        <div class="dress-card">
         <svg class="dress-icon dress-icon-man" viewBox="0 0 92 112" aria-hidden="true">
          <g class="dress-figure dress-figure-man">
-          <!-- Smoking clásico: chaqueta, camisa, moño y pantalón claramente separados. -->
-          <path class="tux-jacket" d="M24 16 37 10l9 13 9-13 13 6 7 34-10 3-5-23-4 34H36l-4-34-5 23-10-3 7-34Z"/>
-          <path class="tux-shirt" d="M38 10h16l-2 25-6 10-6-10-2-25Z"/>
-          <path class="tux-lapel" d="M37 10 46 23 39 39 31 17Zm18 0L46 23l7 16 8-22Z"/>
-          <path class="tux-bow" d="M38 14l8 4 8-4-2 8-6-3-6 3-2-8Z"/>
-          <path class="tux-pants" d="M35 61h22l4 43H50l-4-31-4 31H31l4-43Z"/>
+          <!-- Smoking sin cabeza: chaqueta y pantalón son piezas visualmente independientes. -->
+          <path class="tux-jacket" d="M29 17 38 12h16l9 5 7 32-9 3-5-22-2 29H38l-2-29-5 22-9-3 7-32Z"/>
+          <path class="tux-shirt" d="M39 12h14l-1 25-6 9-6-9-1-25Z"/>
+          <path class="tux-lapel" d="M38 13 46 25 40 39 32 18Zm16 0L46 25l6 14 8-21Z"/>
+          <path class="tux-bow" d="M38 15 46 19l8-4-2 7-6-3-6 3-2-7Z"/>
+          <path class="tux-pants" d="M36 65h20l1 39H48l-2-30-2 30h-9l1-39Z"/>
          </g>
         </svg>
         <p data-template-id="dress-men-label" class="canva-text eyebrow">ELLOS</p>
