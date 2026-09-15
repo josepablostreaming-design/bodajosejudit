@@ -1430,6 +1430,87 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
   #personal-invite-section + .itinerary-ornament.wedding-rings-divider{height:4.75rem!important;min-height:4.75rem!important;padding-inline:1.25rem!important;}
 }
 </style>
+
+<style id="v17-master-visual">
+/* V17 MASTER VISUAL — ritmo vertical + eliminación definitiva de residuos heredados. */
+:root{
+  --space-related:14px;
+  --space-title-content:20px;
+  --space-divider-title:32px;
+  --space-section-major:52px;
+}
+
+/* INVITADOS: los pseudo-elementos originales eran las pequeñas líneas verdes residuales. */
+#personal-invite-section::before,
+#personal-invite-section::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  clip-path:none!important;
+}
+#personal-invite-section{
+  background:var(--ivory)!important;
+  overflow:visible!important;
+  padding-top:var(--space-section-major)!important;
+  padding-bottom:var(--space-section-major)!important;
+}
+
+/* El separador de alianzas es siempre marfil limpio. */
+.itinerary-ornament.wedding-rings-divider,
+#personal-invite-section + .itinerary-ornament.wedding-rings-divider{
+  background-color:var(--ivory)!important;
+  background-image:none!important;
+  clip-path:none!important;
+  box-shadow:none!important;
+  border:0!important;
+  overflow:visible!important;
+  margin:0!important;
+}
+.itinerary-ornament.wedding-rings-divider::before,
+.itinerary-ornament.wedding-rings-divider::after{
+  content:none!important;
+  display:none!important;
+}
+
+/* Padres: una sola pieza de papel; nada se dibuja debajo del rasgado. */
+.parents-panel::before,.parents-panel::after,
+.adult-panel::before,.adult-panel::after{
+  content:none!important;
+  display:none!important;
+}
+.parents-panel,.adult-panel{box-shadow:none!important;}
+
+/* Ritmo editorial. 20 px título → contenido; 14 px para contenido relacionado. */
+[data-template-id="venue-section"] .section-title + .image-frame{margin-top:var(--space-title-content)!important;}
+[data-template-id="itinerary-title"] + .itinerary-list{margin-top:var(--space-title-content)!important;}
+[data-template-id="rsvp-section"] .section-title + *,
+[data-template-id="song-section"] .section-title + *,
+[data-template-id="gift-section"] .section-title + *{margin-top:var(--space-title-content)!important;}
+
+/* Invitados: jerarquía interna deliberada y regular. */
+#personal-invite-name{margin-top:var(--space-title-content)!important;}
+#personal-invite-section .rule{margin-top:var(--space-related)!important;}
+#personal-invite-copy-1{margin-top:var(--space-title-content)!important;}
+#personal-invite-copy-1 + p,
+#personal-invite-count,
+#personal-invite-count + p{margin-top:var(--space-related)!important;}
+
+/* Separador → título de nueva sección: 32 px. */
+.itinerary-ornament.wedding-rings-divider + section{padding-top:var(--space-divider-title)!important;}
+
+/* Excepciones intencionales: los paneles editoriales conservan su composición propia. */
+.parents-panel{padding-top:4rem!important;padding-bottom:4rem!important;}
+.adult-panel{padding-top:3.65rem!important;padding-bottom:3.65rem!important;}
+.parents-heart-line{margin-top:var(--space-title-content)!important;}
+
+/* Vestimenta: ELEGANTE pertenece al título, por eso conserva un intervalo más corto. */
+[data-template-id="dress-section"] .dress-code-word{margin-top:10px!important;}
+
+@media(max-width:390px){
+  #personal-invite-section{padding-top:48px!important;padding-bottom:48px!important;}
+}
+</style>
+
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
