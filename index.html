@@ -1511,6 +1511,47 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 }
 </style>
 
+
+<style id="v18-1-correccion-verificada">
+/* V18.1 — correcciones efectivas verificadas; estas reglas son la última autoridad visual. */
+/* Calendario: más ancho, misma coordenada vertical, escala proporcional. */
+.hero-botanical-divider img{
+  width:min(100%,458px)!important;max-width:100%!important;height:auto!important;max-height:50px!important;
+  object-fit:contain!important;object-position:center center!important;
+  transform:translateX(4.5%) scale(1.14)!important;transform-origin:center center!important;
+}
+/* Paneles verdes: menos aire arriba/abajo sin apretar el contenido. */
+.parents-panel{padding-top:3.25rem!important;padding-bottom:3.25rem!important;}
+.adult-panel{padding-top:3.05rem!important;padding-bottom:3.05rem!important;}
+/* Invitados: acercar suavemente el texto al separador de alianzas. */
+#personal-invite-section{padding-bottom:40px!important;}
+/* Itinerario: baja TODO el bloque respecto del botánico; composición interna intacta. */
+.botanical-venue:not(.botanical-rsvp) + [data-template-id="itinerary-section"]{padding-top:2.25rem!important;}
+/* Vestimenta: un poco más de aire respecto del botánico superior. */
+.botanical-rsvp + [data-template-id="dress-section"]{padding-top:2.75rem!important;}
+/* Figuras de vestimenta: eucalipto, smoking/vestido y animaciones complementarias. */
+.dress-icon{stroke:#4F5F4B!important;fill:none!important;stroke-width:1.45!important;overflow:visible!important;}
+.dress-icon .dress-accent{stroke:#B49558!important;}
+.dress-figure{transform-box:fill-box;transform-origin:center bottom;}
+.dress-figure-man{animation:v181Suit 3.2s ease-in-out infinite;}
+.dress-figure-woman{animation:v181Dress 3.4s ease-in-out .18s infinite;}
+@keyframes v181Suit{0%,100%{transform:translateY(0) rotate(0)}38%{transform:translateY(-4px) rotate(-2deg)}62%{transform:translateY(-1px) rotate(1.5deg)}}
+@keyframes v181Dress{0%,100%{transform:translateY(0) rotate(0)}38%{transform:translateY(-3px) rotate(2deg)}62%{transform:translateY(0) rotate(-1.5deg)}}
+/* Blanco reservado: blanco puro, sin borde. */
+.white-swatch{background:#FFFFFF!important;border:0!important;box-shadow:none!important;}
+/* Música ↔ alianzas ↔ regalo: transición más compacta. */
+[data-template-id="song-section"]{padding-bottom:1.6rem!important;}
+[data-template-id="song-section"] + .itinerary-ornament.wedding-rings-divider{height:4.2rem!important;min-height:4.2rem!important;}
+.itinerary-ornament.wedding-rings-divider + [data-template-id="gift-section"]{padding-top:1.6rem!important;}
+/* Regalo: acercar el último texto a la fotografía final. */
+[data-template-id="gift-section"]{padding-bottom:1.65rem!important;}
+@media(max-width:390px){
+  #personal-invite-section{padding-bottom:38px!important;}
+  [data-template-id="song-section"] + .itinerary-ornament.wedding-rings-divider{height:4rem!important;min-height:4rem!important;}
+}
+@media(prefers-reduced-motion:reduce){.dress-figure{animation:none!important;}}
+</style>
+
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -1685,13 +1726,26 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
       <h2 data-template-id="dress-title" class="canva-text serif mt-4">ELEGANTE</h2>
       <div class="grid grid-cols-2 gap-5 mt-10">
        <div class="dress-card">
-        <svg class="dress-icon" viewBox="0 0 80 100" aria-hidden="true"><circle cx="40" cy="15" r="8"></circle><path d="M31 30l9-7 9 7 8 25-8 4-4-15v35H35V44l-4 15-8-4z"></path><path d="M35 79h-7M45 79h7"></path><path stroke="#B49558" d="M34 32h12"></path>
+        <svg class="dress-icon dress-icon-man" viewBox="0 0 80 100" aria-hidden="true">
+         <g class="dress-figure dress-figure-man">
+          <circle cx="40" cy="14" r="7.5"></circle>
+          <path d="M28 31l12-8 12 8 7 24-8 3-5-16v39H34V42l-5 16-8-3 7-24Z"></path>
+          <path d="M34 27l6 10 6-10M40 37v25M34 81l-2 10M46 81l2 10"></path>
+          <path class="dress-accent" d="M37 29l3 5 3-5M40 34l-3 8 3 4 3-4-3-8"></path>
+          <path class="dress-accent" d="M30 34l10 6 10-6"></path>
+         </g>
         </svg>
         <p data-template-id="dress-men-label" class="canva-text eyebrow">ELLOS</p>
         <p data-template-id="dress-men-copy" class="canva-text mt-3">Traje formal</p>
        </div>
        <div class="dress-card">
-        <svg class="dress-icon" viewBox="0 0 80 100" aria-hidden="true"><circle cx="40" cy="15" r="8"></circle><path d="M34 29l6-6 6 6 7 19-6 4 10 28H23l10-28-6-4z"></path><path d="M34 29l6 9 6-9"></path><path stroke="#B49558" d="M28 80h24"></path>
+        <svg class="dress-icon dress-icon-woman" viewBox="0 0 80 100" aria-hidden="true">
+         <g class="dress-figure dress-figure-woman">
+          <circle cx="40" cy="14" r="7.5"></circle>
+          <path d="M34 27l6-5 6 5 5 16-6 3 13 37H22l13-37-6-3 5-16Z"></path>
+          <path d="M34 27l6 10 6-10M35 46h10"></path>
+          <path class="dress-accent" d="M27 82c8-3 18-3 26 0"></path>
+         </g>
         </svg>
         <p data-template-id="dress-women-label" class="canva-text eyebrow">ELLAS</p>
         <p data-template-id="dress-women-copy" class="canva-text mt-3">Vestido formal</p>
