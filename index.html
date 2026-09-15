@@ -1368,6 +1368,43 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 #personal-invite-section + .itinerary-ornament span{z-index:2!important;}
 </style>
 
+
+<style id="v15-rings-paper-final">
+/* V15 — separadores de alianzas + papel eucalipto orgánico. */
+/* Papel artesanal: se elimina el patrón regular de puntos y se usa grano irregular tipo fibra/marmoleado. */
+.parents-panel,.adult-panel{
+  background-color:#4F5F4B!important;
+  background-image:
+    linear-gradient(118deg,rgba(255,255,255,.035),transparent 27%,rgba(28,39,29,.055) 51%,transparent 73%,rgba(255,255,255,.025)),
+    radial-gradient(ellipse at 18% 24%,rgba(255,255,255,.055) 0,transparent 34%),
+    radial-gradient(ellipse at 76% 67%,rgba(18,31,22,.09) 0,transparent 39%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035 .11' numOctaves='4' seed='17' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E")!important;
+  background-size:100% 100%,100% 100%,100% 100%,180px 180px!important;
+  background-blend-mode:soft-light,soft-light,multiply,soft-light!important;
+}
+
+/* Todos los antiguos separadores verdes pasan a ser marfil, con líneas champagne y alianzas. */
+.itinerary-ornament.wedding-rings-divider{
+  height:5.1rem!important;min-height:5.1rem!important;width:100%!important;
+  margin:0!important;padding:0 1.6rem!important;background:#F7F3EA!important;
+  color:#B49558!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:.85rem!important;
+  clip-path:none!important;overflow:visible!important;pointer-events:none!important;
+}
+.itinerary-ornament.wedding-rings-divider::before,.itinerary-ornament.wedding-rings-divider::after{display:none!important;content:none!important;}
+.rings-line{height:1px;flex:1 1 auto;max-width:8.4rem;background:linear-gradient(to right,transparent,rgba(180,149,88,.82));transform-origin:right center;animation:ringLineIn 3.6s ease-in-out infinite;}
+.rings-line:last-child{background:linear-gradient(to left,transparent,rgba(180,149,88,.82));transform-origin:left center;}
+.wedding-rings{width:4.65rem;height:2.75rem;overflow:visible;flex:none;stroke:#B49558;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.wedding-rings .ring{transform-box:fill-box;transform-origin:center;}
+.wedding-rings .ring-left{animation:ringJoinLeft 3.6s cubic-bezier(.22,1,.36,1) infinite;}
+.wedding-rings .ring-right{animation:ringJoinRight 3.6s cubic-bezier(.22,1,.36,1) infinite;}
+.wedding-rings .ring-spark{animation:ringSpark 3.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center;}
+@keyframes ringJoinLeft{0%,10%{transform:translateX(-8px) rotate(-7deg);opacity:.72}30%,78%{transform:translateX(0) rotate(0);opacity:1}100%{transform:translateX(-8px) rotate(-7deg);opacity:.72}}
+@keyframes ringJoinRight{0%,10%{transform:translateX(8px) rotate(7deg);opacity:.72}30%,78%{transform:translateX(0) rotate(0);opacity:1}100%{transform:translateX(8px) rotate(7deg);opacity:.72}}
+@keyframes ringSpark{0%,25%,68%,100%{opacity:0;transform:scale(.55)}34%,48%{opacity:1;transform:scale(1.18)}}
+@keyframes ringLineIn{0%,12%,100%{transform:scaleX(.72);opacity:.45}32%,76%{transform:scaleX(1);opacity:1}}
+@media(max-width:390px){.itinerary-ornament.wedding-rings-divider{height:4.75rem!important;min-height:4.75rem!important;padding-inline:1.25rem!important}.wedding-rings{width:4.25rem;height:2.55rem}.rings-line{max-width:6.8rem}}
+@media(prefers-reduced-motion:reduce){.wedding-rings *,.rings-line{animation:none!important}}
+</style>
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -1455,7 +1492,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
       <p class="canva-text mt-2 leading-7">para celebrar juntos.</p>
      </div>
     </section>
-    <div class="itinerary-ornament interactive-heart" role="button" tabindex="0" aria-label="Corazón decorativo"><span>♡</span>
+    <div class="itinerary-ornament wedding-rings-divider" aria-hidden="true"><span class="rings-line"></span><svg class="wedding-rings" viewBox="0 0 86 44" role="img" aria-label="Alianzas"><g class="ring ring-left"><ellipse cx="34" cy="22" rx="15" ry="11"/></g><g class="ring ring-right"><ellipse cx="52" cy="22" rx="15" ry="11"/></g><g class="ring-spark"><path d="M43 4v6M40 7h6"/><path d="M68 10l3-3M69 13h5"/></g></svg><span class="rings-line"></span>
     </div>
     <section data-template-id="venue-section" class="canva-section section-pad text-center">
      <div class="section-inner">
@@ -1503,7 +1540,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
       </div>
      </div>
     </section>
-    <div class="itinerary-ornament interactive-heart" role="button" tabindex="0" aria-label="Corazón decorativo"><span>♡</span>
+    <div class="itinerary-ornament wedding-rings-divider" aria-hidden="true"><span class="rings-line"></span><svg class="wedding-rings" viewBox="0 0 86 44" role="img" aria-label="Alianzas"><g class="ring ring-left"><ellipse cx="34" cy="22" rx="15" ry="11"/></g><g class="ring ring-right"><ellipse cx="52" cy="22" rx="15" ry="11"/></g><g class="ring-spark"><path d="M43 4v6M40 7h6"/><path d="M68 10l3-3M69 13h5"/></g></svg><span class="rings-line"></span>
     </div>
     <section data-template-id="rsvp-section" class="canva-section section-pad">
      <div class="section-inner max-w-xl">
@@ -1596,7 +1633,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
       <p id="song-success" data-template-id="song-success-message" class="canva-text song-success mt-5">¡Gracias por tu sugerencia!</p>
      </div>
     </section>
-    <div class="itinerary-ornament interactive-heart" role="button" tabindex="0" aria-label="Corazón decorativo"><span>♡</span>
+    <div class="itinerary-ornament wedding-rings-divider" aria-hidden="true"><span class="rings-line"></span><svg class="wedding-rings" viewBox="0 0 86 44" role="img" aria-label="Alianzas"><g class="ring ring-left"><ellipse cx="34" cy="22" rx="15" ry="11"/></g><g class="ring ring-right"><ellipse cx="52" cy="22" rx="15" ry="11"/></g><g class="ring-spark"><path d="M43 4v6M40 7h6"/><path d="M68 10l3-3M69 13h5"/></g></svg><span class="rings-line"></span>
     </div>
     <section data-template-id="gift-section" class="canva-section section-pad text-center">
      <div class="section-inner max-w-md">
