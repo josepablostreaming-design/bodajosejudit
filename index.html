@@ -1659,6 +1659,52 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 [data-template-id="song-section"]{padding-top:3.35rem!important;}
 </style>
 
+
+<style id="v18-6-animaciones-iconos">
+/* V18.6 — solo microajustes aprobados; el resto queda congelado. */
+/* Portada: bajar únicamente la frase, sin alterar flujo, altura ni otras hojas. */
+[data-template-id="welcome-copy"]{transform:translateY(12px)!important;}
+
+/* Vestimenta: siluetas más inequívocas, sin líneas decorativas blancas/doradas. */
+.dress-icon .tux-jacket,.dress-icon .tux-lapel,.dress-icon .tux-bow,.dress-icon .tux-pants,
+.dress-icon .gown-bodice,.dress-icon .gown-skirt,.dress-icon .gown-waist{fill:#4F5F4B!important;stroke:none!important;}
+.dress-icon .tux-shirt{fill:#F7F3EA!important;stroke:none!important;}
+.dress-figure-man{transform-box:fill-box;transform-origin:50% 55%;}
+.dress-figure-woman{transform-box:fill-box;transform-origin:50% 70%;}
+
+/* Música: el gran icono adquiere una animación recurrente tan perceptible como Regalo. */
+[data-template-id="song-section"] .feature-illustration.is-visible svg{
+  animation:v186MusicIcon 2.75s cubic-bezier(.4,0,.2,1) infinite!important;
+  transform-origin:center center!important;
+}
+[data-template-id="song-section"] .feature-illustration.is-visible .music-note-a{
+  animation:v186MusicNoteA 2.15s ease-in-out infinite!important;
+}
+[data-template-id="song-section"] .feature-illustration.is-visible .music-note-b{
+  animation:v186MusicNoteB 2.15s ease-in-out .32s infinite!important;
+}
+@keyframes v186MusicIcon{0%,100%{transform:translateY(0) rotate(0) scale(1)}38%{transform:translateY(-5px) rotate(-3deg) scale(1.045)}62%{transform:translateY(-2px) rotate(2deg) scale(1.02)}78%{transform:translateY(-4px) rotate(-1deg) scale(1.035)}}
+@keyframes v186MusicNoteA{0%,100%{transform:translate(0,0) rotate(0);opacity:.6}45%{transform:translate(2px,-7px) rotate(9deg);opacity:1}70%{transform:translate(-1px,-3px) rotate(-4deg);opacity:.82}}
+@keyframes v186MusicNoteB{0%,100%{transform:translate(0,0) rotate(0);opacity:.55}45%{transform:translate(-2px,-6px) rotate(-8deg);opacity:1}70%{transform:translate(1px,-2px) rotate(4deg);opacity:.8}}
+
+/* Itinerario: misma elegancia, pero amplitud visible comparable a los iconos Música/Regalo. */
+@keyframes v5Church{0%,72%,100%{transform:translateY(0) scale(1)}82%{transform:translateY(-4px) scale(1.10)}91%{transform:translateY(-1px) scale(1.035)}}
+@keyframes v5Cocktail{0%,70%,100%{transform:translateY(0) rotate(0)}80%{transform:translateY(-4px) rotate(-10deg)}90%{transform:translateY(-1px) rotate(5deg)}}
+@keyframes v5Pulse{0%,70%,100%{transform:scale(1);opacity:.72}80%{transform:scale(1.30);opacity:1}89%{transform:scale(.96);opacity:.9}94%{transform:scale(1.15);opacity:1}}
+@keyframes v5Notes{0%,65%,100%{transform:translateY(0) rotate(0);opacity:.65}77%{transform:translateY(-8px) rotate(8deg);opacity:1}89%{transform:translateY(-3px) rotate(-4deg);opacity:.9}}
+@keyframes v5Cloche{0%,70%,100%{transform:translateY(0) scale(1)}81%{transform:translateY(-7px) scale(1.07)}91%{transform:translateY(-2px) scale(1.02)}}
+@keyframes v5ToastL{0%,68%,100%{transform:rotate(0) translate(0,0)}79%{transform:rotate(12deg) translate(4px,-4px)}90%{transform:rotate(3deg) translate(1px,-1px)}}
+@keyframes v5ToastR{0%,68%,100%{transform:rotate(0) translate(0,0)}79%{transform:rotate(-12deg) translate(-4px,-4px)}90%{transform:rotate(-3deg) translate(-1px,-1px)}}
+@keyframes v5Car{0%,64%,100%{transform:translateX(-3px) translateY(0)}76%{transform:translateX(7px) translateY(-2px)}88%{transform:translateX(1px) translateY(0)}}
+
+@media(prefers-reduced-motion:reduce){
+ [data-template-id="welcome-copy"],
+ [data-template-id="song-section"] .feature-illustration.is-visible svg,
+ [data-template-id="song-section"] .feature-illustration.is-visible .music-note-a,
+ [data-template-id="song-section"] .feature-illustration.is-visible .music-note-b{animation:none!important;}
+}
+</style>
+
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -1830,11 +1876,12 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
        <div class="dress-card">
         <svg class="dress-icon dress-icon-man" viewBox="0 0 92 112" aria-hidden="true">
          <g class="dress-figure dress-figure-man">
-          <!-- Smoking de gala inspirado en la referencia: chaqueta con faldones y pantalón. -->
-          <path class="tux-fill" d="M24 14 37 8l9 13 9-13 13 6 8 35-10 3-5-22-2 30 9 7-7 37H50l-4-29-4 29H31l-7-37 9-7-2-30-5 22-10-3 8-35Z"/>
-          <path class="tux-shirt" d="M38 9h16l-3 28-5 8-5-8-3-28Z"/>
-          <path class="tux-fill" d="M37 9 46 21 39 38 31 15Zm18 0L46 21l7 17 8-23Z"/>
-          <path class="tux-bow" d="M38 13l8 4 8-4-2 8-6-3-6 3-2-8Z"/>
+          <!-- Smoking clásico: chaqueta, camisa, moño y pantalón claramente separados. -->
+          <path class="tux-jacket" d="M24 16 37 10l9 13 9-13 13 6 7 34-10 3-5-23-4 34H36l-4-34-5 23-10-3 7-34Z"/>
+          <path class="tux-shirt" d="M38 10h16l-2 25-6 10-6-10-2-25Z"/>
+          <path class="tux-lapel" d="M37 10 46 23 39 39 31 17Zm18 0L46 23l7 16 8-22Z"/>
+          <path class="tux-bow" d="M38 14l8 4 8-4-2 8-6-3-6 3-2-8Z"/>
+          <path class="tux-pants" d="M35 61h22l4 43H50l-4-31-4 31H31l4-43Z"/>
          </g>
         </svg>
         <p data-template-id="dress-men-label" class="canva-text eyebrow">ELLOS</p>
@@ -1843,9 +1890,10 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
        <div class="dress-card">
         <svg class="dress-icon dress-icon-woman" viewBox="0 0 92 112" aria-hidden="true">
          <g class="dress-figure dress-figure-woman">
-          <!-- Vestido largo de gala con escote en V y caída hasta el piso. -->
-          <path class="gown-fill" d="M31 8 46 30 61 8l7 4-9 34c3 16 8 37 15 58H18c7-21 12-42 15-58l-9-34 7-4Z"/>
-          <path class="gown-belt" d="M32 43h28v4H32z"/>
+          <!-- Vestido de gala largo: escote en V, cintura marcada y falda fluida. -->
+          <path class="gown-bodice" d="M30 9 46 31 62 9l7 5-10 31H33L23 14l7-5Z"/>
+          <path class="gown-skirt" d="M33 43h26c1 18 5 40 14 61H19c9-21 13-43 14-61Z"/>
+          <path class="gown-waist" d="M32 42h28v4H32z"/>
          </g>
         </svg>
         <p data-template-id="dress-women-label" class="canva-text eyebrow">ELLAS</p>
