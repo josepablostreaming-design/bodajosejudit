@@ -1225,6 +1225,43 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 [data-template-id="rsvp-section"] input,[data-template-id="rsvp-section"] select,[data-template-id="rsvp-section"] textarea{min-height:48px!important;}
 [data-template-id="rsvp-section"] textarea{min-height:82px!important;height:82px!important;}
 </style>
+
+<style id="v12-ajustes-botanicos-y-separadores">
+/* V12 — ajustes solicitados sin alterar el resto del diseño aprobado */
+/* 1) Calendario: bajar el bloque botánico para que no asome en la portada y
+      hacer la rama visualmente más larga, centrada y de perfil bajo. */
+.hero-botanical-divider{
+  width:100%!important; height:58px!important; min-height:58px!important;
+  margin:2.75rem 0 .35rem!important; padding:0!important;
+  overflow:hidden!important; display:flex!important; align-items:center!important; justify-content:center!important;
+}
+.hero-botanical-divider img{
+  width:82%!important; max-width:none!important; height:50px!important;
+  object-fit:contain!important; object-position:center!important;
+  clip-path:none!important; margin:0!important;
+  transform:scaleX(1.72)!important; transform-origin:center center!important;
+}
+/* 2) Invitados → Ceremonia: se usa literalmente la misma franja que
+      Itinerario → Confirmación y se iguala el aire hasta el título siguiente. */
+#personal-invite-section + .itinerary-ornament{
+  height:3.1rem!important; min-height:3.1rem!important; margin:0!important;
+}
+#personal-invite-section + .itinerary-ornament + [data-template-id="venue-section"]{
+  padding-top:32px!important;
+}
+/* El separador ya está fuera de venue-section: anulamos el antiguo espacio/parche interno. */
+[data-template-id="venue-section"]{overflow:hidden!important;}
+/* 3) RSVP → Vestimenta: botanico-linea y exactamente el mismo perfil bajo
+      del botánico Ceremonia → Itinerario. */
+.botanical-rsvp{
+  height:48px!important; padding:0!important; margin:.15rem 0 0!important;
+}
+.botanical-rsvp img{
+  height:48px!important; width:100%!important; max-width:none!important;
+  object-fit:cover!important; object-position:center!important; transform:none!important; clip-path:none!important;
+}
+.botanical-rsvp + [data-template-id="dress-section"]{padding-top:1.5rem!important;}
+</style>
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -1311,12 +1348,9 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
       <p class="canva-text mt-2 leading-7">para celebrar juntos.</p>
      </div>
     </section>
+    <div class="itinerary-ornament interactive-heart" role="button" tabindex="0" aria-label="Corazón decorativo"><span>♡</span>
+    </div>
     <section data-template-id="venue-section" class="canva-section section-pad text-center">
-     <div class="itinerary-ornament venue-chapter-band-v8 interactive-heart"><span class="animated-heart venue-divider-heart" role="button" tabindex="0" aria-label="Corazón interactivo">
-<svg viewBox="0 0 64 64" aria-hidden="true">
- <path class="heart-main" d="M32 51C26 44 12 35 12 23.5 12 16.8 16.8 12 23 12c4.1 0 7.2 2.2 9 5.2C33.8 14.2 36.9 12 41 12c6.2 0 11 4.8 11 11.5C52 35 38 44 32 51Z"/>
- <circle class="heart-spark" cx="50" cy="13" r="2.2"/><circle class="heart-spark" cx="55" cy="19" r="1.2"/>
-</svg></span></div>
      <div class="section-inner">
       <p data-template-id="venue-title" class="canva-text section-title">Ceremonia y Recepción</p>
       <div class="image-frame mt-8 rounded-[1.5rem]"><img src="assets/club-golf.webp" alt="Club de Golf La Paz" class="venue-main-image">
@@ -1393,7 +1427,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
       </div>
      </div>
     </section>
-    <div class="botanical-divider botanical-rsvp" aria-hidden="true"><img src="assets/botanico-esquinas.png" alt="">
+    <div class="botanical-divider botanical-venue botanical-rsvp" aria-hidden="true"><img src="assets/botanico-linea.png" alt="">
     </div>
     <section data-template-id="dress-section" class="canva-section section-pad text-center">
      <div class="section-inner">
