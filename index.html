@@ -1319,6 +1319,55 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 @media(prefers-reduced-motion:reduce){.animated-heart svg,.music-title-icon,.gift-title-icon,.itinerary-item.is-visible .timeline-icon-v5,.phl-side,.phl-heart,.adult-toast-icon g,.adult-toast-icon .toast-heart,[data-template-id="gift-section"] .section-inner>i,[data-template-id="dress-section"] .section-inner>i{animation:none!important;}}
 </style>
 
+
+<style id="v14-pulido-final">
+/* V14 — únicamente los tres microajustes finales aprobados. */
+/* 1. Botánico del calendario: un poco más largo, desplazado ópticamente a la derecha,
+      siempre con escala uniforme para no deformar la ilustración. */
+.hero-botanical-divider{overflow:visible!important;justify-content:center!important;}
+.hero-botanical-divider img{
+  width:min(96%,440px)!important;max-width:96%!important;height:auto!important;max-height:50px!important;
+  object-fit:contain!important;object-position:center center!important;
+  transform:translateX(4.5%) scale(1.08)!important;transform-origin:center center!important;
+}
+
+/* Papel eucalipto común: textura visible pero elegante. */
+.parents-panel,.adult-panel,#personal-invite-section + .itinerary-ornament{
+  background-color:#4F5F4B!important;
+  background-image:
+    radial-gradient(ellipse at 16% 18%,rgba(255,255,255,.075) 0 1px,transparent 1.6px),
+    radial-gradient(ellipse at 72% 36%,rgba(27,39,29,.14) 0 1.1px,transparent 1.8px),
+    radial-gradient(ellipse at 44% 82%,rgba(255,255,255,.045) 0 .8px,transparent 1.5px),
+    linear-gradient(118deg,rgba(255,255,255,.055) 0%,transparent 24%,rgba(32,45,34,.075) 48%,transparent 70%,rgba(255,255,255,.035) 100%),
+    linear-gradient(28deg,rgba(29,43,32,.05),transparent 38%,rgba(255,255,255,.035) 62%,transparent)!important;
+  background-size:7px 7px,11px 11px,9px 9px,100% 100%,100% 100%!important;
+}
+/* Evitar que la textura anterior de V13 duplique/ensucie el papel. */
+.parents-panel::before,.adult-panel::before{display:none!important;}
+
+/* 2. Padres y Adultos: rotura más profunda, irregular y de aspecto manual. */
+.parents-panel{
+  clip-path:polygon(
+    0 3.0%,3% 1.7%,7% 2.4%,11% .8%,16% 2.0%,21% .6%,26% 2.5%,31% 1.2%,36% 2.1%,41% .5%,46% 2.4%,51% 1.0%,56% 2.0%,61% .7%,66% 2.6%,71% 1.1%,76% 2.2%,81% .5%,86% 2.5%,91% 1.0%,96% 2.2%,100% 1.1%,
+    100% 97.5%,96% 99.2%,91% 98.0%,86% 99.5%,81% 97.8%,76% 99.1%,71% 97.6%,66% 99.4%,61% 98.0%,56% 99.5%,51% 97.7%,46% 99.1%,41% 97.5%,36% 99.4%,31% 98.0%,26% 99.5%,21% 97.8%,16% 99.2%,11% 97.6%,6% 99.4%,2% 98.0%,0 99.0%)!important;
+}
+.adult-panel{
+  clip-path:polygon(
+    0 2.8%,4% 1.1%,9% 2.4%,14% .6%,19% 2.2%,24% 1.0%,29% 2.7%,34% .8%,39% 2.0%,44% .5%,49% 2.5%,54% 1.0%,59% 2.2%,64% .6%,69% 2.7%,74% 1.0%,79% 2.1%,84% .5%,89% 2.5%,94% .9%,100% 2.1%,
+    100% 97.6%,95% 99.4%,90% 97.9%,85% 99.5%,80% 97.7%,75% 99.2%,70% 97.6%,65% 99.5%,60% 97.9%,55% 99.3%,50% 97.5%,45% 99.5%,40% 97.8%,35% 99.2%,30% 97.6%,25% 99.5%,20% 97.9%,15% 99.3%,10% 97.6%,5% 99.4%,0 98.0%)!important;
+}
+
+/* 3. Franja Invitados → Ceremonia: mismo papel y rotura más marcada. */
+#personal-invite-section + .itinerary-ornament{
+  height:3.55rem!important;min-height:3.55rem!important;
+  clip-path:polygon(0 14%,4% 4%,9% 16%,14% 2%,20% 13%,26% 5%,32% 17%,38% 3%,44% 14%,50% 5%,56% 16%,62% 2%,68% 14%,74% 5%,80% 17%,86% 3%,92% 14%,96% 5%,100% 13%,100% 87%,96% 97%,91% 84%,86% 99%,80% 87%,74% 96%,68% 83%,62% 98%,56% 86%,50% 97%,44% 84%,38% 99%,32% 86%,26% 97%,20% 83%,14% 98%,8% 86%,4% 96%,0 88%)!important;
+  overflow:hidden!important;
+}
+#personal-invite-section + .itinerary-ornament::before,
+#personal-invite-section + .itinerary-ornament::after{display:none!important;}
+#personal-invite-section + .itinerary-ornament span{z-index:2!important;}
+</style>
+
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
