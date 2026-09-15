@@ -1637,6 +1637,28 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 @media(prefers-reduced-motion:reduce){.calendar-heart-v5,.calendar-heart-v5 path{animation:none!important;}}
 </style>
 
+
+<style id="v18-5-tuneo">
+/* V18.5 — tuneos puntuales aprobados. */
+/* Portada: bajar el lockup dentro del mismo espacio total, sin agrandar la página. */
+.opening-copy{padding-top:4.15rem!important;padding-bottom:1.30rem!important;}
+
+/* Calendario: conservar escala del botánico, corregir su centro óptico y dar aire a TODO el bloque siguiente. */
+.hero-botanical-divider{margin-bottom:2.15rem!important;}
+.hero-botanical-divider img{width:89.6%!important;transform:translateX(3.2%)!important;transform-origin:center center!important;}
+
+/* Vestimenta: siluetas formales limpias; la camisa es una masa, no líneas decorativas. */
+.dress-icon{width:5.7rem!important;height:7rem!important;}
+.dress-icon .tux-fill,.dress-icon .gown-fill{fill:#4F5F4B!important;stroke:none!important;}
+.dress-icon .tux-shirt{fill:#F7F3EA!important;stroke:none!important;}
+.dress-icon .tux-bow{fill:#4F5F4B!important;stroke:none!important;}
+.dress-icon .gown-belt{fill:#4F5F4B!important;stroke:none!important;}
+
+/* Adultos: recuperar respiración inferior y separar con suavidad la entrada de Música. */
+.adult-panel{padding-bottom:3.15rem!important;}
+[data-template-id="song-section"]{padding-top:3.35rem!important;}
+</style>
+
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -1808,11 +1830,11 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
        <div class="dress-card">
         <svg class="dress-icon dress-icon-man" viewBox="0 0 92 112" aria-hidden="true">
          <g class="dress-figure dress-figure-man">
-          <path class="formal-fill" d="M28 13 40 8h12l12 5 9 31-9 4-5-19-2 69H35l-2-69-5 19-9-4 9-31Z"></path>
-          <path class="shirt-fill" d="M40 8h12l5 8-11 29-11-29 5-8Z"></path>
-          <path class="formal-line" d="M35 16 46 45 57 16M46 45v45M33 29l7 7M59 29l-7 7M37 73h7M48 73h7"></path>
-          <path class="dress-accent formal-bow" d="M39 13l7 4 7-4-1 8-6-3-6 3-1-8Z"></path>
-          <circle class="formal-button" cx="46" cy="52" r="1.15"></circle><circle class="formal-button" cx="46" cy="60" r="1.15"></circle>
+          <!-- Smoking de gala inspirado en la referencia: chaqueta con faldones y pantalón. -->
+          <path class="tux-fill" d="M24 14 37 8l9 13 9-13 13 6 8 35-10 3-5-22-2 30 9 7-7 37H50l-4-29-4 29H31l-7-37 9-7-2-30-5 22-10-3 8-35Z"/>
+          <path class="tux-shirt" d="M38 9h16l-3 28-5 8-5-8-3-28Z"/>
+          <path class="tux-fill" d="M37 9 46 21 39 38 31 15Zm18 0L46 21l7 17 8-23Z"/>
+          <path class="tux-bow" d="M38 13l8 4 8-4-2 8-6-3-6 3-2-8Z"/>
          </g>
         </svg>
         <p data-template-id="dress-men-label" class="canva-text eyebrow">ELLOS</p>
@@ -1821,10 +1843,9 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
        <div class="dress-card">
         <svg class="dress-icon dress-icon-woman" viewBox="0 0 92 112" aria-hidden="true">
          <g class="dress-figure dress-figure-woman">
-          <path class="formal-fill" d="M36 9 46 26 56 9l8 4-8 30 16 56H20l16-56-8-30 8-4Z"></path>
-          <path class="formal-line" d="M36 9 46 26 56 9M34 43c8 3 16 3 24 0M25 98c14-4 28-4 42 0"></path>
-          <path class="dress-accent formal-belt" d="M34 42h24"></path>
-          <path class="dress-accent formal-bow" d="M43 40l3 3 3-3 4 2-4 4-3-2-3 2-4-4 4-2Z"></path>
+          <!-- Vestido largo de gala con escote en V y caída hasta el piso. -->
+          <path class="gown-fill" d="M31 8 46 30 61 8l7 4-9 34c3 16 8 37 15 58H18c7-21 12-42 15-58l-9-34 7-4Z"/>
+          <path class="gown-belt" d="M32 43h28v4H32z"/>
          </g>
         </svg>
         <p data-template-id="dress-women-label" class="canva-text eyebrow">ELLAS</p>
