@@ -1263,6 +1263,62 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 }
 .botanical-rsvp + [data-template-id="dress-section"]{padding-top:1.5rem!important;}
 </style>
+
+<style id="v13-correccion-visual-final">
+/* V13 corregida — cambios visuales aprobados */
+/* Calendario: misma caja/márgenes aprobados; imagen proporcional y centrada, sin aplastar. */
+.hero-botanical-divider{height:58px!important;min-height:58px!important;margin:2.75rem 0 .35rem!important;padding:0!important;overflow:visible!important;display:flex!important;align-items:center!important;justify-content:center!important;}
+.hero-botanical-divider img{height:auto!important;max-height:50px!important;width:min(92%,420px)!important;max-width:92%!important;object-fit:contain!important;object-position:center center!important;transform:none!important;clip-path:none!important;margin:0 auto!important;display:block!important;}
+
+/* Padres + Adultos: mismo lenguaje de papel eucalipto, textura y rasgado orgánico. */
+.parents-panel,.adult-panel{position:relative!important;background:#4F5F4B!important;color:#F7F3EA!important;isolation:isolate;overflow:visible!important;}
+.parents-panel::before,.adult-panel::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.20;background-image:radial-gradient(circle at 18% 24%,rgba(255,255,255,.16) 0 .7px,transparent .8px),radial-gradient(circle at 72% 62%,rgba(0,0,0,.16) 0 .65px,transparent .75px),linear-gradient(115deg,rgba(255,255,255,.035),transparent 35%,rgba(0,0,0,.025) 70%,transparent);background-size:5px 5px,7px 7px,100% 100%;mix-blend-mode:soft-light;}
+.parents-panel{clip-path:polygon(0 1.8%,4% .7%,9% 1.7%,15% .4%,21% 1.4%,28% .6%,35% 1.6%,42% .5%,49% 1.3%,56% .4%,63% 1.5%,70% .7%,77% 1.7%,84% .5%,91% 1.4%,96% .6%,100% 1.4%,100% 98.5%,95% 99.3%,89% 98.4%,82% 99.5%,75% 98.6%,68% 99.4%,61% 98.3%,54% 99.5%,47% 98.5%,40% 99.4%,33% 98.4%,26% 99.5%,19% 98.5%,12% 99.3%,6% 98.4%,0 99.2%);padding-top:4rem!important;padding-bottom:4rem!important;}
+.adult-panel{clip-path:polygon(0 2%,5% .8%,11% 1.8%,17% .5%,24% 1.5%,31% .6%,38% 1.7%,45% .5%,52% 1.4%,59% .4%,66% 1.6%,73% .7%,80% 1.8%,87% .5%,94% 1.5%,100% .8%,100% 98.3%,94% 99.4%,88% 98.5%,81% 99.5%,74% 98.6%,67% 99.4%,60% 98.4%,53% 99.5%,46% 98.5%,39% 99.4%,32% 98.4%,25% 99.5%,18% 98.5%,11% 99.4%,5% 98.4%,0 99.2%);padding-top:3.65rem!important;padding-bottom:3.65rem!important;}
+.parents-panel .section-inner,.adult-panel .section-inner{position:relative;z-index:1;}
+
+/* Padres: línea champagne + corazón central. */
+.parents-heart-line{width:min(76%,310px);height:28px;margin:1.25rem auto .35rem;display:flex;align-items:center;justify-content:center;color:#B49558;gap:9px;}
+.phl-side{height:1px;flex:1;background:linear-gradient(90deg,transparent,#B49558 18%,#B49558 82%,transparent);transform-origin:center;animation:parentLineAlive 3.2s ease-in-out infinite;}
+.phl-heart{font-family:Georgia,serif;font-size:1.42rem;line-height:1;color:#B49558;display:inline-block;animation:parentHeartAlive 2.5s ease-in-out infinite;}
+@keyframes parentLineAlive{0%,100%{transform:scaleX(.92);opacity:.72}45%{transform:scaleX(1.04);opacity:1}65%{transform:scaleX(.98);opacity:.9}}
+@keyframes parentHeartAlive{0%,100%{transform:scale(1) translateY(0)}35%{transform:scale(1.24) translateY(-2px)}52%{transform:scale(1.06) translateY(0)}68%{transform:scale(1.17) translateY(-1px)}}
+
+/* Adultos: brindis champagne, más cálido que un aviso. */
+.adult-toast-icon{width:66px;height:52px;margin:0 auto 1.05rem;color:#B49558;}
+.adult-toast-icon svg{width:100%;height:100%;overflow:visible;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;}
+.adult-toast-icon .toast-left{transform-origin:34px 28px;animation:adultToastL 2.9s ease-in-out infinite;}
+.adult-toast-icon .toast-right{transform-origin:44px 28px;animation:adultToastR 2.9s ease-in-out infinite;}
+.adult-toast-icon .toast-heart{fill:none;animation:adultToastHeart 2.9s ease-in-out infinite;transform-origin:39px 12px;}
+@keyframes adultToastL{0%,100%{transform:translate(0,0) rotate(0)}38%{transform:translate(4px,-3px) rotate(9deg)}50%{transform:translate(6px,-4px) rotate(12deg)}64%{transform:translate(2px,-1px) rotate(3deg)}}
+@keyframes adultToastR{0%,100%{transform:translate(0,0) rotate(0)}38%{transform:translate(-4px,-3px) rotate(-9deg)}50%{transform:translate(-6px,-4px) rotate(-12deg)}64%{transform:translate(-2px,-1px) rotate(-3deg)}}
+@keyframes adultToastHeart{0%,30%,100%{transform:scale(.82);opacity:.55}48%{transform:scale(1.3) translateY(-2px);opacity:1}65%{transform:scale(1);opacity:.82}}
+
+/* Cierre: la foto vuelve a dominar; menos masa verde sin reducir tipografía. */
+.final-couple-photo::after{height:17%!important;background:linear-gradient(to bottom,rgba(79,95,75,0),#4F5F4B 94%)!important;}
+[data-template-id="closing-section"]{padding-top:1.85rem!important;padding-bottom:2.45rem!important;}
+[data-template-id="closing-copy"]{margin-top:1.15rem!important;}
+[data-template-id="closing-date"]{margin-top:1.2rem!important;}
+[data-template-id="closing-heart"]{margin-top:1rem!important;}
+
+/* Movimiento global más visible para iconos decorativos. */
+.animated-heart svg{animation:v13HeartMove 2.15s ease-in-out infinite!important;transform-origin:center;}
+@keyframes v13HeartMove{0%,100%{transform:translateY(0) scale(1) rotate(0)}28%{transform:translateY(-5px) scale(1.15) rotate(-3deg)}46%{transform:translateY(1px) scale(1.04) rotate(2deg)}64%{transform:translateY(-3px) scale(1.12) rotate(0)}}
+.music-title-icon{animation:v13MusicMove 2.05s ease-in-out infinite!important;transform-origin:center;}
+@keyframes v13MusicMove{0%,100%{transform:translateY(0) rotate(0) scale(1)}25%{transform:translateY(-6px) rotate(-8deg) scale(1.08)}50%{transform:translateY(2px) rotate(6deg) scale(1.02)}72%{transform:translateY(-4px) rotate(-3deg) scale(1.07)}}
+.gift-title-icon{animation:v13GiftMove 2.35s ease-in-out infinite!important;transform-origin:center bottom;}
+@keyframes v13GiftMove{0%,100%{transform:translateY(0) rotate(0) scale(1)}25%{transform:translateY(-6px) rotate(-5deg) scale(1.08)}43%{transform:translateY(0) rotate(5deg) scale(1.03)}62%{transform:translateY(-4px) rotate(-2deg) scale(1.07)}}
+/* Itinerario: cada escena conserva personalidad, pero con recorrido claramente visible. */
+.itinerary-item.is-visible .timeline-icon-v5{animation:v13ItineraryFloat 2.6s ease-in-out infinite!important;transform-origin:center;}
+.itinerary-item:nth-child(2n).is-visible .timeline-icon-v5{animation-delay:.28s!important;}
+.itinerary-item:nth-child(3n).is-visible .timeline-icon-v5{animation-delay:.52s!important;}
+@keyframes v13ItineraryFloat{0%,100%{transform:translate(0,0) rotate(0) scale(1)}30%{transform:translate(5px,-6px) rotate(4deg) scale(1.07)}55%{transform:translate(-3px,1px) rotate(-3deg) scale(1.02)}76%{transform:translate(2px,-4px) rotate(2deg) scale(1.06)}}
+/* Otros lucide decorativos, excluyendo controles/formulario. */
+[data-template-id="gift-section"] .section-inner>i,[data-template-id="dress-section"] .section-inner>i{animation:v13SmallIcon 2.5s ease-in-out infinite;transform-origin:center;}
+@keyframes v13SmallIcon{0%,100%{transform:translateY(0) rotate(0) scale(1)}35%{transform:translateY(-5px) rotate(-7deg) scale(1.12)}58%{transform:translateY(1px) rotate(5deg) scale(1.04)}75%{transform:translateY(-3px) rotate(-2deg) scale(1.08)}}
+@media(prefers-reduced-motion:reduce){.animated-heart svg,.music-title-icon,.gift-title-icon,.itinerary-item.is-visible .timeline-icon-v5,.phl-side,.phl-heart,.adult-toast-icon g,.adult-toast-icon .toast-heart,[data-template-id="gift-section"] .section-inner>i,[data-template-id="dress-section"] .section-inner>i{animation:none!important;}}
+</style>
+
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -1325,6 +1381,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
     <section data-template-id="parents-section" class="canva-section parents-panel section-pad text-center">
      <div class="section-inner">
       <h2 data-template-id="parents-title" class="canva-text eyebrow">Con la bendición de Dios y nuestros padres</h2>
+      <div class="parents-heart-line" aria-hidden="true"><span class="phl-side phl-left"></span><span class="phl-heart">♡</span><span class="phl-side phl-right"></span></div>
       <div class="grid grid-cols-2 gap-7 mt-10">
        <div>
         <p data-template-id="groom-parents-title" class="canva-text eyebrow">PADRES DEL NOVIO</p>
@@ -1461,7 +1518,9 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
     </section>
     <section data-template-id="adults-section" class="canva-section adult-panel text-center">
      <div class="section-inner max-w-md">
-      <i data-lucide="heart" class="mx-auto mb-6 text-[#B49558]" aria-hidden="true"></i>
+      <div class="adult-toast-icon" aria-hidden="true">
+       <svg viewBox="0 0 80 58"><g class="toast-left"><path d="M20 10h18l-3 18c-.7 4.3-4.2 7.4-8.5 7.4S18.7 32.3 18 28L15 10h5Z"/><path d="M26.5 35.4V46M20.5 48h12"/></g><g class="toast-right"><path d="M42 10h18l-3 18c-.7 4.3-4.2 7.4-8.5 7.4S40.7 32.3 40 28l-3-18h5Z"/><path d="M48.5 35.4V46M42.5 48h12"/></g><path class="toast-heart" d="M39 9c-2.8-4.2-8.5-1.8-8.5 2.4 0 4.1 8.5 8.4 8.5 8.4s8.5-4.3 8.5-8.4C47.5 7.2 41.8 4.8 39 9Z"/></svg>
+      </div>
       <h2 data-template-id="adults-title" class="canva-text section-title">Una celebración para adultos</h2>
       <p data-template-id="adults-copy" class="canva-text mt-6 leading-7">Queremos que disfrutes, celebres y bailes durante esta ocasión tan especial.</p>
       <p data-template-id="adults-note" class="canva-text mt-4 leading-7">Hemos preparado nuestra boda exclusivamente para adultos.</p>
