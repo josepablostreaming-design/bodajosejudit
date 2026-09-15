@@ -1574,6 +1574,38 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 @media(prefers-reduced-motion:reduce){.dress-figure-man,.dress-figure-woman{animation:none!important;}}
 </style>
 
+
+<style id="v18-3-portada-calendario">
+/* V18.3 — únicamente portada y botánico del calendario. */
+/* Portada: se retira el corazón redundante y se redistribuye el aire. */
+.opening-copy{padding-top:2.65rem!important;padding-bottom:1.45rem!important;}
+[data-template-id="welcome-title"].couple-lockup{
+  font-size:clamp(4.02rem,16.1vw,5.08rem)!important;
+  margin:0 auto .58rem!important;
+}
+[data-template-id="welcome-copy"]{
+  margin:0 auto!important;
+  font-size:.93rem!important;
+  line-height:1.45!important;
+}
+/* Calendario: centrado real y mayor escala proporcional; sin translate lateral ni deformación. */
+.hero-botanical-divider{
+  justify-content:center!important;
+  overflow:visible!important;
+}
+.hero-botanical-divider img{
+  width:112%!important;
+  max-width:none!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  transform:none!important;
+  transform-origin:center center!important;
+  margin:0 auto!important;
+  display:block!important;
+}
+</style>
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -1591,11 +1623,6 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
      </div>
      <div class="opening-copy">
       <h2 data-template-id="welcome-title" class="canva-text script couple-lockup"><span class="couple-name">José</span><span class="couple-amp">&amp;</span><span class="couple-name">Judit</span></h2>
-      <p data-template-id="welcome-heart" class="canva-text" role="button" tabindex="0" aria-label="Corazón decorativo"><span class="animated-heart hero-final-heart" role="button" tabindex="0" aria-label="Corazón interactivo">
-<svg viewBox="0 0 64 64" aria-hidden="true">
- <path class="heart-main" d="M32 51C26 44 12 35 12 23.5 12 16.8 16.8 12 23 12c4.1 0 7.2 2.2 9 5.2C33.8 14.2 36.9 12 41 12c6.2 0 11 4.8 11 11.5C52 35 38 44 32 51Z"/>
- <circle class="heart-spark" cx="50" cy="13" r="2.2"/><circle class="heart-spark" cx="55" cy="19" r="1.2"/>
-</svg></span></p>
       <p data-template-id="welcome-copy" class="canva-text">Todo es más bonito cuando es contigo</p>
      </div>
     </section>
