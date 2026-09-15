@@ -1726,6 +1726,29 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 @media(prefers-reduced-motion:reduce){.music-title-icon{animation:none!important;}}
 </style>
 
+
+<style id="v18-8-cierre-visual">
+/* V18.8 — cierre visual: traje definitivo + animación real del icono visible de Música. */
+.dress-icon .tux-jacket,.dress-icon .tux-lapel,.dress-icon .tux-pants,.dress-icon .tux-tie{fill:#4F5F4B!important;stroke:none!important;}
+.dress-icon .tux-shirt{fill:#F7F3EA!important;stroke:none!important;}
+/* El SVG exterior conserva el translateY(-50%) que centra el icono. Solo se anima el grupo interior. */
+.music-title-icon{animation:none!important;}
+.music-title-icon-motion{
+  transform-box:fill-box;
+  transform-origin:center bottom;
+  animation:v188MusicVisible 2.35s cubic-bezier(.4,0,.2,1) infinite!important;
+  will-change:transform;
+}
+@keyframes v188MusicVisible{
+  0%,100%{transform:translateY(0) rotate(0deg) scale(1)}
+  24%{transform:translateY(-6px) rotate(-7deg) scale(1.09)}
+  43%{transform:translateY(1px) rotate(6deg) scale(1.03)}
+  62%{transform:translateY(-5px) rotate(-4deg) scale(1.08)}
+  78%{transform:translateY(-1px) rotate(2deg) scale(1.03)}
+}
+@media(prefers-reduced-motion:reduce){.music-title-icon-motion{animation:none!important;}}
+</style>
+
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -1897,12 +1920,12 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
        <div class="dress-card">
         <svg class="dress-icon dress-icon-man" viewBox="0 0 92 112" aria-hidden="true">
          <g class="dress-figure dress-figure-man">
-          <!-- Smoking sin cabeza: chaqueta y pantalón son piezas visualmente independientes. -->
-          <path class="tux-jacket" d="M29 17 38 12h16l9 5 7 32-9 3-5-22-2 29H38l-2-29-5 22-9-3 7-32Z"/>
-          <path class="tux-shirt" d="M39 12h14l-1 25-6 9-6-9-1-25Z"/>
-          <path class="tux-lapel" d="M38 13 46 25 40 39 32 18Zm16 0L46 25l6 14 8-21Z"/>
-          <path class="tux-bow" d="M38 15 46 19l8-4-2 7-6-3-6 3-2-7Z"/>
-          <path class="tux-pants" d="M36 65h20l1 39H48l-2-30-2 30h-9l1-39Z"/>
+          <!-- Traje formal sin cabeza: saco entallado, camisa, corbata y pantalón recto. -->
+          <path class="tux-jacket" d="M25 17 38 11h16l13 6 7 34-10 3-6-25-1 29-11 8-11-8-1-29-6 25-10-3 7-34Z"/>
+          <path class="tux-shirt" d="M38 11h16l-2 28-6 10-6-10-2-28Z"/>
+          <path class="tux-lapel" d="M38 12 46 27 39 43 29 19Zm16 0L46 27l7 16 10-24Z"/>
+          <path class="tux-tie" d="M43 16h6l2 5-5 7-5-7 2-5Zm3 11 5 16-5 8-5-8 5-16Z"/>
+          <path class="tux-pants" d="M35 64h22l2 40H49l-3-31-3 31H33l2-40Z"/>
          </g>
         </svg>
         <p data-template-id="dress-men-label" class="canva-text eyebrow">ELLOS</p>
@@ -1951,7 +1974,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
         <g class="music-note-b gold"><path d="M4.5 8V5"></path><path d="M4.5 5l2 1"></path></g>
        </svg>
       </div>
-      <div class="section-title-with-icon music-title-lockup"><svg class="section-title-icon music-title-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M14 28V12l15-3v15"></path><circle cx="10.5" cy="29" r="4"></circle><circle cx="25.5" cy="25" r="4"></circle><path class="gold" d="M31 8v-4M29 6h4"></path></svg><p data-template-id="song-eyebrow" class="canva-text section-title">Música</p></div>
+      <div class="section-title-with-icon music-title-lockup"><svg class="section-title-icon music-title-icon" viewBox="0 0 40 40" aria-hidden="true"><g class="music-title-icon-motion"><path d="M14 28V12l15-3v15"></path><circle cx="10.5" cy="29" r="4"></circle><circle cx="25.5" cy="25" r="4"></circle><path class="gold" d="M31 8v-4M29 6h4"></path></g></svg><p data-template-id="song-eyebrow" class="canva-text section-title">Música</p></div>
       <p data-template-id="song-copy" class="canva-text mt-5 leading-7">Hay canciones que nos llevan a momentos, personas e historias especiales.</p>
       <h2 data-template-id="song-question" class="canva-text serif mt-5">¿Qué canción te gustaría escuchar y bailar con nosotros?</h2>
       <div id="song-locked" class="song-locked mt-7" role="status">Primero confirma tu asistencia. Si podrás acompañarnos, aquí se habilitará tu sugerencia musical.</div>
