@@ -1606,6 +1606,37 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
   display:block!important;
 }
 </style>
+
+<style id="v18-4-ajuste-visual">
+/* V18.4 — microajustes solicitados sobre V18.3. */
+/* Portada: nombres y frase ganan presencia; el botánico siguiente queda visualmente más abajo. */
+.opening-copy{padding-top:2.8rem!important;padding-bottom:2.65rem!important;}
+[data-template-id="welcome-title"].couple-lockup{font-size:clamp(4.35rem,17.2vw,5.45rem)!important;margin-bottom:.72rem!important;}
+[data-template-id="welcome-copy"]{font-size:.98rem!important;line-height:1.5!important;}
+
+/* Botánico sobre calendario: 20% menor que V18.3, centrado, proporcional y con aire antes de la fecha. */
+.hero-botanical-divider{justify-content:center!important;overflow:visible!important;margin-bottom:1.15rem!important;}
+.hero-botanical-divider img{width:89.6%!important;max-width:none!important;height:auto!important;max-height:none!important;object-fit:contain!important;object-position:center center!important;transform:none!important;margin:0 auto!important;display:block!important;}
+
+/* Corazón del día 3: animación mucho más visible sin perder elegancia. */
+.calendar-heart-v5{animation:v184HeartFloat 2.4s ease-in-out infinite!important;transform-origin:center!important;}
+.calendar-heart-v5 path{stroke-width:3.25!important;animation:v184HeartDraw .9s ease forwards,v184HeartPulse 1.65s cubic-bezier(.4,0,.2,1) 1s infinite!important;transform-origin:center!important;}
+@keyframes v184HeartDraw{from{stroke-dashoffset:180}to{stroke-dashoffset:0}}
+@keyframes v184HeartPulse{0%,100%{transform:scale(1)}18%{transform:scale(1.18)}34%{transform:scale(.96)}50%{transform:scale(1.13)}68%{transform:scale(1)} }
+@keyframes v184HeartFloat{0%,100%{translate:0 0}50%{translate:0 -2px}}
+
+/* Vestimenta: siluetas limpias, sin líneas blancas ni detalles champagne. */
+.dress-icon .formal-line,.dress-icon .formal-button,.dress-icon .dress-accent,.dress-icon .formal-bow,.dress-icon .formal-belt{display:none!important;}
+.dress-icon .shirt-fill{fill:#4F5F4B!important;stroke:#4F5F4B!important;}
+
+/* Música: el título queda matemáticamente centrado; el icono se acomoda a su izquierda sin desplazarlo. */
+.music-title-lockup{position:relative!important;display:block!important;width:fit-content!important;min-width:10.5rem!important;margin-left:auto!important;margin-right:auto!important;text-align:center!important;}
+.music-title-lockup .section-title{display:block!important;margin:0!important;text-align:center!important;}
+.music-title-lockup .music-title-icon{position:absolute!important;right:calc(100% + .55rem)!important;left:auto!important;top:50%!important;transform:translateY(-50%)!important;margin:0!important;}
+@media(max-width:380px){.music-title-lockup .music-title-icon{right:calc(100% + .35rem)!important;}}
+@media(prefers-reduced-motion:reduce){.calendar-heart-v5,.calendar-heart-v5 path{animation:none!important;}}
+</style>
+
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
