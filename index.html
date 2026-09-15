@@ -1405,6 +1405,31 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 @media(max-width:390px){.itinerary-ornament.wedding-rings-divider{height:4.75rem!important;min-height:4.75rem!important;padding-inline:1.25rem!important}.wedding-rings{width:4.25rem;height:2.55rem}.rings-line{max-width:6.8rem}}
 @media(prefers-reduced-motion:reduce){.wedding-rings *,.rings-line{animation:none!important}}
 </style>
+
+<style id="v16-sanitation-final">
+/* V16 — saneamiento final. No rediseña: elimina residuos heredados y unifica separadores. */
+/* Los separadores de alianzas viven SIEMPRE sobre marfil, incluso el que sigue a Invitados. */
+.itinerary-ornament.wedding-rings-divider,
+#personal-invite-section + .itinerary-ornament.wedding-rings-divider{
+  background:#F7F3EA!important;
+  background-image:none!important;
+  clip-path:none!important;
+  overflow:visible!important;
+  height:5.1rem!important;
+  min-height:5.1rem!important;
+  padding:0 1.6rem!important;
+  margin:0!important;
+}
+#personal-invite-section + .itinerary-ornament.wedding-rings-divider::before,
+#personal-invite-section + .itinerary-ornament.wedding-rings-divider::after{display:none!important;content:none!important;}
+/* Papel verde: un único recorte. Se neutralizan las antiguas capas marfil que creaban una segunda fila. */
+.parents-panel::before,.parents-panel::after,.adult-panel::before,.adult-panel::after{display:none!important;content:none!important;background:none!important;}
+.parents-panel,.adult-panel{overflow:hidden!important;}
+@media(max-width:390px){
+  .itinerary-ornament.wedding-rings-divider,
+  #personal-invite-section + .itinerary-ornament.wedding-rings-divider{height:4.75rem!important;min-height:4.75rem!important;padding-inline:1.25rem!important;}
+}
+</style>
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -1588,7 +1613,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
         <svg class="dress-icon" viewBox="0 0 80 100" aria-hidden="true"><circle cx="40" cy="15" r="8"></circle><path d="M34 29l6-6 6 6 7 19-6 4 10 28H23l10-28-6-4z"></path><path d="M34 29l6 9 6-9"></path><path stroke="#B49558" d="M28 80h24"></path>
         </svg>
         <p data-template-id="dress-women-label" class="canva-text eyebrow">ELLAS</p>
-        <p data-template-id="dress-women-copy" class="canva-text mt-3">Vestido Formal</p>
+        <p data-template-id="dress-women-copy" class="canva-text mt-3">Vestido formal</p>
        </div>
       </div>
       <div class="dress-extra-copy">
@@ -1659,7 +1684,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
     </div>
     <footer data-template-id="closing-section" class="canva-footer section-pad text-center">
      <div class="section-inner">
-      <h2 data-template-id="closing-names" class="canva-text script closing-name"><span class="couple-name">José</span><span class="couple-amp">&amp;</span><span class="couple-name">Judit</span></span></h2>
+      <h2 data-template-id="closing-names" class="canva-text script closing-name"><span class="couple-name">José</span><span class="couple-amp">&amp;</span><span class="couple-name">Judit</span></h2>
       <p data-template-id="closing-copy" class="canva-text mt-7 leading-7">Gracias por acompañarnos en uno de los días más importantes de nuestra historia.</p>
       <p data-template-id="closing-date" class="canva-text mt-7 leaf-mark">03 · 10 · 2026</p>
       <p data-template-id="closing-heart" class="canva-text mt-6" role="button" tabindex="0" aria-label="Corazón decorativo"><span class="animated-heart" role="button" tabindex="0" aria-label="Corazón interactivo">
