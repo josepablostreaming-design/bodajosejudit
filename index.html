@@ -1822,8 +1822,8 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 /* V19.2 — tres ajustes finales solicitados */
 /* 1. RSVP: destacar claramente la pregunta dinámica ¿Podrás/Podrán asistir? */
 #attending-question{
-  font-size:1.05rem!important;
-  line-height:1.35!important;
+  font-size:1.20rem!important;
+  line-height:1.30!important;
   font-weight:700!important;
   margin-bottom:.75rem!important;
   color:#4F5F4B!important;
@@ -2163,7 +2163,26 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
       musicButton.setAttribute("aria-pressed", "true");
     }
 
+    function requestInvitationFullscreen() {
+      const root = document.documentElement;
+      const requestFullscreen = root.requestFullscreen
+        || root.webkitRequestFullscreen
+        || root.msRequestFullscreen;
+
+      if (!requestFullscreen) return;
+
+      try {
+        const fullscreenAttempt = requestFullscreen.call(root);
+        if (fullscreenAttempt && typeof fullscreenAttempt.catch === "function") {
+          fullscreenAttempt.catch(() => {});
+        }
+      } catch (error) {}
+    }
+
     openButton.addEventListener("click", () => {
+      // Fullscreen and audio are both requested directly from the guest's tap.
+      // Browsers that do not support fullscreen simply continue normally.
+      requestInvitationFullscreen();
       try { beginMusic(); } catch (error) {}
       document.body.appendChild(invitation);
       invitation.classList.add("is-opening");
