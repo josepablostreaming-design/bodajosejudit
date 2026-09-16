@@ -1946,6 +1946,61 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
   padding-top:1.15rem!important;
 }
 </style>
+
+<style id="v19-8-corona-botanica">
+/* V19.8 — corona botánica centrada entre la frase y el calendario. */
+/* Los nombres bajan solo un poco respecto a V19.6 para recuperar equilibrio. */
+[data-template-id="welcome-title"].couple-lockup{
+  font-size:clamp(4.05rem,17.2vw,5.35rem)!important;
+  margin-bottom:1.15rem!important;
+}
+[data-template-id="welcome-copy"]{
+  margin-top:.55rem!important;
+  margin-bottom:0!important;
+}
+.opening-copy{padding-bottom:2.20rem!important;}
+
+/* Sustituye la rama diagonal por una corona independiente y centrada. */
+.hero-botanical-divider.hero-wreath{
+  position:relative!important;
+  z-index:3!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  margin:1.65rem auto 1.75rem!important;
+  padding:0!important;
+  overflow:visible!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.hero-botanical-divider.hero-wreath img{
+  display:block!important;
+  width:min(57vw,225px)!important;
+  max-width:225px!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  clip-path:none!important;
+  margin:0 auto!important;
+  transform:none!important;
+  transform-origin:center center!important;
+  animation:wreathBreath 6.8s ease-in-out infinite!important;
+}
+/* Margen propio antes del calendario para que la corona nunca quede pegada. */
+.hero-botanical-divider.hero-wreath + [data-template-id="date-section"]{
+  padding-top:.95rem!important;
+}
+@keyframes wreathBreath{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-3px) scale(1.012);}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-botanical-divider.hero-wreath img{animation:none!important;}
+}
+</style>
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -1966,7 +2021,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
       <p data-template-id="welcome-copy" class="canva-text">Todo es más bonito cuando es contigo</p>
      </div>
     </section>
-    <div class="hero-botanical-divider" aria-hidden="true"><img src="assets/botanico-horizontal.png" alt=""></div>
+    <div class="hero-botanical-divider hero-wreath" aria-hidden="true"><img src="assets/corona-botanica.png" alt=""></div>
     <section data-template-id="date-section" class="canva-section section-pad date-compact text-center">
      <div class="section-inner max-w-md">
       <p data-template-id="date-title" class="canva-text eyebrow hidden"></p>
