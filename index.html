@@ -1817,6 +1817,29 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 }
 </style>
 
+
+<style id="v19-2-pulido-final">
+/* V19.2 — tres ajustes finales solicitados */
+/* 1. RSVP: destacar claramente la pregunta dinámica ¿Podrás/Podrán asistir? */
+#attending-question{
+  font-size:1.05rem!important;
+  line-height:1.35!important;
+  font-weight:700!important;
+  margin-bottom:.75rem!important;
+  color:#4F5F4B!important;
+}
+/* 2. Cierre: fecha ligeramente mayor, manteniendo el mismo estilo. */
+[data-template-id="closing-date"]{
+  font-size:.88rem!important;
+}
+/* 3. Itinerario: dar un poco más de aire al separador botánico por ambos lados. */
+.botanical-venue:not(.botanical-rsvp){
+  margin:.65rem 0 .45rem!important;
+}
+.botanical-venue:not(.botanical-rsvp) + [data-template-id="itinerary-section"]{
+  padding-top:2.45rem!important;
+}
+</style>
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
