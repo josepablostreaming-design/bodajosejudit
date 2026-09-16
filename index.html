@@ -1904,6 +1904,48 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 /* El espacio pertenece al bloque de portada: el botánico y todo lo posterior bajan juntos. */
 .opening-copy{padding-bottom:4.65rem!important;}
 </style>
+
+<style id="v19-7-botanico-diagonal">
+/* V19.7 — prueba botánico diagonal + títulos de sección más delicados. */
+.section-title{font-size:26px!important;}
+
+/* Recupera el aire excesivo creado para ocultar el botánico en fullscreen. */
+.opening-copy{padding-bottom:2.55rem!important;}
+
+/* El mismo asset botánico se convierte en una transición diagonal. */
+.hero-botanical-divider{
+  position:relative!important;
+  z-index:3!important;
+  width:100%!important;
+  height:96px!important;
+  min-height:96px!important;
+  max-height:none!important;
+  margin:.15rem 0 -.20rem!important;
+  padding:0!important;
+  overflow:visible!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.hero-botanical-divider img{
+  display:block!important;
+  width:104%!important;
+  max-width:none!important;
+  height:auto!important;
+  max-height:82px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  clip-path:none!important;
+  margin:0 auto!important;
+  transform:rotate(6deg)!important;
+  transform-origin:center center!important;
+}
+
+/* Conserva espacio suficiente antes del calendario pese a la inclinación. */
+.hero-botanical-divider + [data-template-id="date-section"]{
+  padding-top:1.15rem!important;
+}
+</style>
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
