@@ -2001,6 +2001,47 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
   .hero-botanical-divider.hero-wreath img{animation:none!important;}
 }
 </style>
+
+<style id="v19-9-corona-ajustes">
+/* V19.9 — corona centrada y más contenida; más aire antes del calendario. */
+.hero-botanical-divider.hero-wreath{
+  width:100%!important;
+  max-width:none!important;
+  margin:1.35rem auto 2.35rem!important;
+  padding:0!important;
+  display:block!important;
+  text-align:center!important;
+}
+.hero-botanical-divider.hero-wreath img{
+  width:min(46vw,180px)!important;
+  max-width:180px!important;
+  height:auto!important;
+  display:block!important;
+  position:relative!important;
+  left:50%!important;
+  margin:0!important;
+  transform:translateX(-50%)!important;
+  animation:wreathBreathCentered 6.8s ease-in-out infinite!important;
+}
+.hero-botanical-divider.hero-wreath + [data-template-id="date-section"]{
+  padding-top:1.35rem!important;
+}
+@keyframes wreathBreathCentered{
+  0%,100%{transform:translateX(-50%) translateY(0) scale(1);}
+  50%{transform:translateX(-50%) translateY(-2px) scale(1.01);}
+}
+/* La frase introductoria de padres baja un nivel de jerarquía sin cambiar su familia tipográfica. */
+[data-template-id="parents-title"]{
+  font-size:clamp(1.34rem,5.55vw,1.66rem)!important;
+  line-height:1.20!important;
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-botanical-divider.hero-wreath img{
+    animation:none!important;
+    transform:translateX(-50%)!important;
+  }
+}
+</style>
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -2552,7 +2593,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
           personalInviteCopy1.textContent = maxPasses === 1
             ? "Queremos compartir este día contigo."
             : "Queremos compartir este día con ustedes.";
-          personalInviteCount.textContent = maxPasses === 1 ? "1 lugar" : `${maxPasses} lugares`;
+          personalInviteCount.textContent = maxPasses === 1 ? "1 pase" : `${maxPasses} pases`;
           personalInviteSection.classList.remove("is-unavailable");
           guestsCountInput.innerHTML = "";
           for (let n = 1; n <= maxPasses; n++) {
