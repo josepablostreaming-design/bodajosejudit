@@ -1964,11 +1964,11 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
        </div>
        <div id="guests-count-field" class="hidden"><label data-template-id="guests-count-label" class="canva-text block text-sm font-semibold mb-2" for="guests-count">Número de asistentes</label><select data-template-id="guests-count-input" id="guests-count" name="guests_count" required="" class="canva-input w-full min-h-14 rounded-xl border border-[#B49558] bg-[#F7F3EA] px-4 text-[#625F57]"><option value="1">1</option></select>
        </div>
-       <div><label data-template-id="dietary-label" class="canva-text block text-sm font-semibold mb-2" for="dietary">Alergias o necesidades alimentarias</label><input data-template-id="dietary-input" id="dietary" name="dietary_requirements" type="text" class="canva-input w-full min-h-14 rounded-xl border border-[#B49558] bg-[#F7F3EA] px-4 text-[#625F57]" placeholder="Cuéntanos si debemos tener algo en cuenta">
+       <div><label data-template-id="dietary-label" class="canva-text block text-sm font-semibold mb-2" for="dietary">Alergias o necesidades alimentarias</label><input data-template-id="dietary-input" id="dietary" name="dietary_requirements" type="text" disabled class="canva-input w-full min-h-14 rounded-xl border border-[#B49558] bg-[#F7F3EA] px-4 text-[#625F57]" placeholder="Cuéntanos si debemos tener algo en cuenta">
        </div>
        <div><label data-template-id="message-label" class="canva-text block text-sm font-semibold mb-2" for="message">Un mensaje para nosotros</label><textarea data-template-id="message-input" id="message" name="message" rows="2" class="canva-input w-full rounded-xl border border-[#B49558] bg-[#F7F3EA] px-4 py-3 text-[#625F57] resize-y" placeholder="Déjanos unas palabras"></textarea>
        </div>
-       <p id="form-error" class="hidden text-sm text-[#625F57]" role="alert"></p><button id="submit-rsvp" type="submit" data-template-id="rsvp-button" class="canva-button min-h-14 w-full rounded-full uppercase tracking-[0.15em] text-xs font-semibold"><span data-template-id="rsvp-button-label" class="canva-text">CONFIRMAR ASISTENCIA</span></button>
+       <p id="form-error" class="hidden text-sm text-[#625F57]" role="alert"></p><button id="submit-rsvp" type="submit" data-template-id="rsvp-button" class="canva-button min-h-14 w-full rounded-full uppercase tracking-[0.15em] text-xs font-semibold"><span data-template-id="rsvp-button-label" class="canva-text">ENVIAR RESPUESTA</span></button>
       </form>
       <p id="rsvp-edit-note" class="rsvp-edit-note text-center hidden">Si tus planes cambian, puedes modificar tu confirmación hasta el 25 de septiembre.</p>
       <div id="rsvp-success" class="rsvp-success text-center mt-10 rounded-2xl p-8 border border-[#B49558]">
@@ -2322,6 +2322,15 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
         }
       }
 
+      function syncDietaryAccess() {
+        const canEditDietary = attendingInput.value === "Sí, asistiré";
+        dietaryInput.disabled = !canEditDietary;
+        dietaryInput.setAttribute("aria-disabled", String(!canEditDietary));
+        dietaryInput.style.opacity = canEditDietary ? "1" : ".5";
+        dietaryInput.style.cursor = canEditDietary ? "text" : "not-allowed";
+        if (!canEditDietary) dietaryInput.value = "";
+      }
+
       (async () => {
         if (!testId || !testId.trim()) {
           rsvpLoading.textContent = "Este enlace de invitación no es válido.";
@@ -2368,7 +2377,8 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
           }
 
           invitationRecord.has_rsvp = hasPreviousRsvp;
-          dietaryInput.value = hasPreviousRsvp ? (invitationRecord.dietary_requirements || "") : "";
+          dietaryInput.value = hasPreviousRsvp && invitationRecord.attending === true ? (invitationRecord.dietary_requirements || "") : "";
+          syncDietaryAccess();
           messageInput.value = hasPreviousRsvp ? (invitationRecord.message || "") : "";
           syncSongAccess();
           rsvpLoading.classList.add("hidden");
@@ -2392,6 +2402,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
           guestsCountInput.disabled = true;
           guestsCountInput.required = false;
         }
+        syncDietaryAccess();
       });
 
       rsvpForm.addEventListener("submit", async (event) => {
@@ -2429,7 +2440,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
             testId.trim(),
             willAttend,
             requestedGuests,
-            String(formData.get("dietary_requirements") || "").trim(),
+            willAttend ? String(formData.get("dietary_requirements") || "").trim() : "",
             String(formData.get("message") || "").trim()
           );
           if (!result || result.success !== true) throw new Error("RSVP rejected");
