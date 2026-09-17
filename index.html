@@ -2085,7 +2085,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
   opacity:0;
   pointer-events:none;
   transform-origin:center;
-  animation:wreathSingleLeafFall 7.6s ease-in-out infinite;
+  animation:wreathSingleLeafFall 3s ease-in-out infinite;
 }
 @keyframes wreathSingleLeafFall{
   0%,55%{
@@ -2116,6 +2116,69 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 /* FINAL — después de una sugerencia exitosa desaparecen campo y botón. */
 #song-form.song-form-submitted{
   display:none!important;
+}
+</style>
+
+
+<style id="final-estetica-100">
+/* Último pulido estético aprobado. */
+
+/* Al retirar la frase final, el panel de padres termina un poco antes. */
+.parents-panel{
+  padding-bottom:2.72rem!important;
+}
+
+/* La frase puente pasa a la sección marfil, justo antes de "CON CARIÑO PARA". */
+.personal-witness-copy{
+  margin:0 auto 1.55rem!important;
+  font-size:.94rem!important;
+  line-height:1.7!important;
+  color:var(--taupe)!important;
+  text-align:center!important;
+}
+
+/* Pases: el número domina y la palabra conserva una escala más editorial. */
+#personal-invite-count{
+  display:flex!important;
+  align-items:baseline!important;
+  justify-content:center!important;
+  gap:.28rem!important;
+  line-height:1!important;
+}
+#personal-invite-count .pass-number{
+  font-family:"Playfair Display",serif!important;
+  font-size:2.02rem!important;
+  font-weight:500!important;
+  color:var(--champagne)!important;
+}
+#personal-invite-count .pass-label{
+  font-family:"Playfair Display",serif!important;
+  font-size:1.28rem!important;
+  font-weight:400!important;
+  color:var(--champagne)!important;
+}
+
+/* Solo el separador inmediatamente posterior al invitado:
+   menos aire arriba y abajo, sin apretarlo. */
+#personal-invite-section{
+  padding-bottom:31px!important;
+}
+#personal-invite-section + .itinerary-ornament.wedding-rings-divider{
+  height:4.45rem!important;
+  min-height:4.45rem!important;
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+#personal-invite-section + .itinerary-ornament.wedding-rings-divider + [data-template-id="venue-section"]{
+  padding-top:1.75rem!important;
+}
+
+@media(max-width:390px){
+  #personal-invite-section{padding-bottom:30px!important;}
+  #personal-invite-section + .itinerary-ornament.wedding-rings-divider{
+    height:4.3rem!important;
+    min-height:4.3rem!important;
+  }
 }
 </style>
 
@@ -2187,11 +2250,12 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
         <p data-template-id="bride-parents" class="canva-text serif mt-4 whitespace-pre-line leading-8">Martín<br>María</p>
        </div>
       </div>
-      <p data-template-id="parents-copy" class="canva-text mt-10 leading-7">Deseamos que sean testigos de este gran día.</p>
+      
      </div>
     </section>
     <section id="personal-invite-section" data-template-id="personal-invite-section" class="canva-section personal-invite-section is-unavailable">
      <div class="section-inner max-w-md">
+      <p data-template-id="parents-copy" class="canva-text personal-witness-copy">Deseamos que sean testigos de este gran día.</p>
       <p class="canva-text eyebrow">CON CARIÑO PARA</p>
       <h2 id="personal-invite-name" class="canva-text personal-invite-name mt-5"></h2>
       <div class="rule"></div>
@@ -2673,7 +2737,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
           personalInviteCopy1.textContent = maxPasses === 1
             ? "Queremos compartir este día contigo."
             : "Queremos compartir este día con ustedes.";
-          personalInviteCount.textContent = maxPasses === 1 ? "1 pase" : `${maxPasses} pases`;
+          personalInviteCount.innerHTML = `<span class="pass-number">${maxPasses}</span> <span class="pass-label">${maxPasses === 1 ? "Pase" : "Pases"}</span>`;
           personalInviteSection.classList.remove("is-unavailable");
           guestsCountInput.innerHTML = "";
           for (let n = 1; n <= maxPasses; n++) {
