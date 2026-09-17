@@ -2088,15 +2088,25 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
   animation:wreathSingleLeafFall 5.2s ease-in-out infinite;
 }
 @keyframes wreathSingleLeafFall{
-  0%,65.6%{
+  /* Caída natural: ~2.42 s, igual que en la versión de 6.2 s aprobada */
+  0%{
     opacity:0;
     transform:translate(0,0) rotate(-28deg) scale(.88);
   }
-  70.3%{ opacity:.78; }
-  85.8%{
+  4.8%{ opacity:.78; }
+  20.3%{
     opacity:.82;
     transform:translate(-8px,34px) rotate(34deg) scale(.92);
   }
+  37.0%{
+    opacity:.62;
+    transform:translate(5px,67px) rotate(108deg) scale(.88);
+  }
+  46.5%{
+    opacity:0;
+    transform:translate(-2px,86px) rotate(158deg) scale(.82);
+  }
+  /* Desde aquí la hoja permanece invisible; solo se acorta esta espera */
   100%{
     opacity:0;
     transform:translate(-2px,86px) rotate(158deg) scale(.82);
