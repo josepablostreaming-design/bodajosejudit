@@ -2085,28 +2085,30 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
   opacity:0;
   pointer-events:none;
   transform-origin:center;
-  animation:wreathSingleLeafFall 5.2s ease-in-out infinite;
+  animation:wreathSingleLeafFall 3.4s ease-in-out infinite;
 }
 @keyframes wreathSingleLeafFall{
-  /* Caída natural: ~2.42 s, igual que en la versión de 6.2 s aprobada */
+  /* La caída ocupa ~3 s; la pausa posterior es de ~0.4 s. */
   0%{
     opacity:0;
     transform:translate(0,0) rotate(-28deg) scale(.88);
   }
-  4.8%{ opacity:.78; }
-  20.3%{
+  5%{
+    opacity:.78;
+    transform:translate(0,0) rotate(-28deg) scale(.88);
+  }
+  43%{
     opacity:.82;
     transform:translate(-8px,34px) rotate(34deg) scale(.92);
   }
-  37.0%{
+  72%{
     opacity:.62;
     transform:translate(5px,67px) rotate(108deg) scale(.88);
   }
-  46.5%{
+  88%{
     opacity:0;
     transform:translate(-2px,86px) rotate(158deg) scale(.82);
   }
-  /* Desde aquí la hoja permanece invisible; solo se acorta esta espera */
   100%{
     opacity:0;
     transform:translate(-2px,86px) rotate(158deg) scale(.82);
