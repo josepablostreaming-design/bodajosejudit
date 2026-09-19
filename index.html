@@ -2785,14 +2785,22 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
           const maxPasses = Number(invitationRecord.assigned_passes || 1);
           const displayName = invitationRecord.display_name || "Invitado";
 
-          // Personalización de padres por invitación.
-          // false (o campo ausente): comportamiento histórico, muestra María y Martín.
-          // true: oculta únicamente a Martín y conserva a María.
+          // Producción: ocultar únicamente a Martín para las invitaciones marcadas.
+          // Se conserva compatibilidad con Supabase si get_invitation devuelve hide_bride_father.
+          const hideBrideFatherCodes = new Set([
+            "CM7Q4N8K2V","JS9M3X6R5A","AD4K8V2Q7M","ST6N3P9X4K",
+            "EA8R5M2V7Q","MB3X7K9N4P","LE5Q2V8M6R","IS7K4N9X3V",
+            "VE2M8R5Q7K","RJ9V3K6M2X","FE4N7Q2X8M","EL6V3M9K5Q",
+            "CA8X2R7N4V","BR5K9Q3M7X","FX2V6N8R4K","LM7R3X9K5N",
+            "DC4M8V2Q6X","JY9K5N3R7V","JA6X2M8Q4N"
+          ]);
+          const shouldHideBrideFather =
+            invitationRecord.hide_bride_father === true ||
+            hideBrideFatherCodes.has(testId.trim());
+
           const brideParents = document.querySelector('[data-template-id="bride-parents"]');
           if (brideParents) {
-            brideParents.innerHTML = invitationRecord.hide_bride_father === true
-              ? "María"
-              : "María<br>Martín";
+            brideParents.innerHTML = shouldHideBrideFather ? "María" : "María<br>Martín";
           }
 
           attendingQuestion.textContent = maxPasses === 1 ? "¿Podrás asistir?" : "¿Podrán asistir?";
