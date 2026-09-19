@@ -2784,6 +2784,17 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
           }
           const maxPasses = Number(invitationRecord.assigned_passes || 1);
           const displayName = invitationRecord.display_name || "Invitado";
+
+          // Personalización de padres por invitación.
+          // false (o campo ausente): comportamiento histórico, muestra María y Martín.
+          // true: oculta únicamente a Martín y conserva a María.
+          const brideParents = document.querySelector('[data-template-id="bride-parents"]');
+          if (brideParents) {
+            brideParents.innerHTML = invitationRecord.hide_bride_father === true
+              ? "María"
+              : "María<br>Martín";
+          }
+
           attendingQuestion.textContent = maxPasses === 1 ? "¿Podrás asistir?" : "¿Podrán asistir?";
           personalInviteName.textContent = displayName;
           personalInviteCopy1.textContent = maxPasses === 1
