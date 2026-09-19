@@ -2798,9 +2798,23 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
             invitationRecord.hide_bride_father === true ||
             hideBrideFatherCodes.has(testId.trim());
 
+          const groomParents = document.querySelector('[data-template-id="groom-parents"]');
           const brideParents = document.querySelector('[data-template-id="bride-parents"]');
-          if (brideParents) {
-            brideParents.innerHTML = shouldHideBrideFather ? "María" : "María<br>Martín";
+
+          if (shouldHideBrideFather) {
+            if (groomParents) {
+              groomParents.innerHTML = "Benito&nbsp;Suñagua<br>Tomasa&nbsp;Aguilar";
+            }
+            if (brideParents) {
+              brideParents.innerHTML = "Maria&nbsp;Silvestre";
+            }
+          } else {
+            if (groomParents) {
+              groomParents.innerHTML = "Benito<br>Tomasa";
+            }
+            if (brideParents) {
+              brideParents.innerHTML = "María<br>Martín";
+            }
           }
 
           attendingQuestion.textContent = maxPasses === 1 ? "¿Podrás asistir?" : "¿Podrán asistir?";
