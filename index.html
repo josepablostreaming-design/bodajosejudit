@@ -2232,6 +2232,24 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
   text-align:center!important;
 }
 </style>
+
+<style id="special-parents-19-only">
+/* Solo para las 19 invitaciones especiales: conservar exactamente la
+   tipografía normal de los padres y bajar suavemente a Maria Silvestre. */
+[data-template-id="bride-parents"].special-single-parent {
+  font-family:"Playfair Display",serif!important;
+  font-size:1.30rem!important;
+  font-weight:500!important;
+  line-height:1.62!important;
+  transform:translateY(.48rem);
+}
+@media(max-width:380px){
+  [data-template-id="bride-parents"].special-single-parent{
+    font-size:1.25rem!important;
+    transform:translateY(.42rem);
+  }
+}
+</style>
 </head>
  <body data-template-id="__page-root" style="background: rgb(247, 243, 234);">
   <header id="cover" data-template-id="cover-section" class="canva-banner cover-screen" style="background: rgb(247, 243, 234);">
@@ -2807,6 +2825,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
             }
             if (brideParents) {
               brideParents.innerHTML = "Maria&nbsp;Silvestre";
+              brideParents.classList.add("special-single-parent");
             }
           } else {
             if (groomParents) {
@@ -2814,6 +2833,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
             }
             if (brideParents) {
               brideParents.innerHTML = "María<br>Martín";
+              brideParents.classList.remove("special-single-parent");
             }
           }
 
