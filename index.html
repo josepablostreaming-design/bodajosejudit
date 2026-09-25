@@ -2803,6 +2803,40 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
           const maxPasses = Number(invitationRecord.assigned_passes || 1);
           const displayName = invitationRecord.display_name || "Invitado";
 
+          // Fecha de confirmación personalizada.
+          // Si Supabase devuelve confirmation_deadline, se usa ese valor.
+          // Como respaldo, estos cuatro códigos tienen ampliación hasta el 27/09/2026.
+          const invitationCode = testId.trim();
+          const extendedDeadlineCodes = new Set([
+            "SP7M4Q8K2V", // Soledad Paredes
+            "YS7M4Q9K2V", // Yamil Saravia
+            "AA6N3V8Q4K", // Armin Aruquipa
+            "EV9K2M7R5X"  // Erik Veramendi
+          ]);
+
+          const confirmationDeadline = invitationRecord.confirmation_deadline ||
+            (extendedDeadlineCodes.has(invitationCode) ? "2026-09-27" : "2026-09-25");
+
+          const [deadlineYear, deadlineMonth, deadlineDayRaw] = confirmationDeadline.split("-");
+          const monthNames = [
+            "enero", "febrero", "marzo", "abril", "mayo", "junio",
+            "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+          ];
+          const deadlineDay = Number(deadlineDayRaw);
+          const deadlineMonthName = monthNames[Number(deadlineMonth) - 1] || "septiembre";
+          const deadlineLong = `${deadlineDay} de ${deadlineMonthName}`;
+          const deadlineUpper = `${deadlineDay} DE ${deadlineMonthName.toUpperCase()}`;
+
+          const rsvpDeadlineElement = document.querySelector('[data-template-id="rsvp-deadline"]');
+          const rsvpSuccessCopy = document.querySelector('[data-template-id="rsvp-success-copy"]');
+          if (rsvpDeadlineElement) rsvpDeadlineElement.textContent = deadlineUpper;
+          if (rsvpEditNote) {
+            rsvpEditNote.textContent = `Si tus planes cambian, puedes modificar tu confirmación hasta el ${deadlineLong}.`;
+          }
+          if (rsvpSuccessCopy) {
+            rsvpSuccessCopy.textContent = `Hemos guardado tu confirmación. Puedes modificarla hasta el ${deadlineLong}.`;
+          }
+
           // Producción: ocultar únicamente a Martín para las invitaciones marcadas.
           // Se conserva compatibilidad con Supabase si get_invitation devuelve hide_bride_father.
           const hideBrideFatherCodes = new Set([
