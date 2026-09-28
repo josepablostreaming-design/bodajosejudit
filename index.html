@@ -2769,14 +2769,74 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 
       function boliviaTodayKey() {
         const parts = new Intl.DateTimeFormat("en-CA", {
-          timeZone: "America/La_Paz", year: "numeric", month: "2-digit", day: "2-digit"
+          timeZone: "America/La_Paz",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit"
         }).formatToParts(new Date());
         const get = type => parts.find(part => part.type === type)?.value || "";
         return `${get("year")}-${get("month")}-${get("day")}`;
       }
 
+      function normalizeConfirmationDeadline(value) {
+        const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})/);
+        return match ? `${match[1]}-${match[2]}-${match[3]}` : null;
+      }
+
       function isConfirmationExpired(deadline) {
-        return Boolean(deadline && boliviaTodayKey() > deadline);
+        const normalized = normalizeConfirmationDeadline(deadline);
+        if (!normalized) return false;
+        const todayNumber = Number(boliviaTodayKey().replaceAll("-", ""));
+        const deadlineNumber = Number(normalized.replaceAll("-", ""));
+        return todayNumber > deadlineNumber;
+      }
+
+      function applyRsvpDeadlineState(expired) {
+        const rsvpCopy = document.querySelector('[data-template-id="rsvp-copy"]');
+        const rsvpHelper = document.querySelector('[data-template-id="rsvp-helper"]');
+        const rsvpDeadlineCopy = document.querySelector('[data-template-id="rsvp-deadline-copy"]');
+        const rsvpDeadlineElement = document.querySelector('[data-template-id="rsvp-deadline"]');
+
+        if (expired) {
+          // Ocultar completamente la confirmación normal.
+          rsvpForm.classList.add("hidden");
+          rsvpForm.style.setProperty("display", "none", "important");
+          rsvpEditNote?.classList.add("hidden");
+          if (rsvpEditNote) rsvpEditNote.style.setProperty("display", "none", "important");
+          successPanel.classList.remove("visible");
+          successPanel.style.setProperty("display", "none", "important");
+
+          // Ocultar textos que podrían sugerir que todavía se puede confirmar.
+          [rsvpCopy, rsvpHelper, rsvpDeadlineCopy, rsvpDeadlineElement].forEach(el => {
+            if (el) el.style.setProperty("display", "none", "important");
+          });
+
+          // Mostrar de forma explícita el aviso, sin depender de Tailwind.
+          if (rsvpExpiredWarning) {
+            rsvpExpiredWarning.classList.remove("hidden");
+            rsvpExpiredWarning.style.setProperty("display", "block", "important");
+          }
+          submitButton.disabled = true;
+          submitButton.setAttribute("aria-disabled", "true");
+        } else {
+          // Invitación todavía habilitada.
+          rsvpForm.classList.remove("hidden");
+          rsvpForm.style.removeProperty("display");
+          rsvpEditNote?.classList.remove("hidden");
+          if (rsvpEditNote) rsvpEditNote.style.removeProperty("display");
+          successPanel.style.removeProperty("display");
+
+          [rsvpCopy, rsvpHelper, rsvpDeadlineCopy, rsvpDeadlineElement].forEach(el => {
+            if (el) el.style.removeProperty("display");
+          });
+
+          if (rsvpExpiredWarning) {
+            rsvpExpiredWarning.classList.add("hidden");
+            rsvpExpiredWarning.style.setProperty("display", "none", "important");
+          }
+          submitButton.disabled = false;
+          submitButton.removeAttribute("aria-disabled");
+        }
       }
 
       const songForm = document.getElementById("song-form");
@@ -2846,7 +2906,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
             "David y Mary"
           ]);
 
-          let confirmationDeadline = invitationRecord.confirmation_deadline;
+          let confirmationDeadline = normalizeConfirmationDeadline(invitationRecord.confirmation_deadline);
           if (!confirmationDeadline) {
             if (extendedDeadline29Codes.has(invitationCode) || extendedDeadline29Names.has(displayName.trim())) {
               confirmationDeadline = "2026-09-29";
@@ -2951,16 +3011,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
           messageInput.value = hasPreviousRsvp ? (invitationRecord.message || "") : "";
           syncSongAccess();
           rsvpLoading.classList.add("hidden");
-          if (confirmationExpired) {
-            rsvpForm.classList.add("hidden");
-            rsvpEditNote.classList.add("hidden");
-            successPanel.classList.remove("visible");
-            rsvpExpiredWarning?.classList.remove("hidden");
-          } else {
-            rsvpExpiredWarning?.classList.add("hidden");
-            rsvpForm.classList.remove("hidden");
-            rsvpEditNote.classList.remove("hidden");
-          }
+          applyRsvpDeadlineState(confirmationExpired);
         } catch (error) {
           console.error(error);
           rsvpLoading.textContent = "No hemos podido cargar tu invitación. Inténtalo nuevamente en unos momentos.";
@@ -2993,9 +3044,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
         }
 
         if (isConfirmationExpired(activeConfirmationDeadline)) {
-          rsvpForm.classList.add("hidden");
-          rsvpEditNote.classList.add("hidden");
-          rsvpExpiredWarning?.classList.remove("hidden");
+          applyRsvpDeadlineState(true);
           return;
         }
 
