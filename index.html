@@ -2414,7 +2414,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
        <p data-template-id="rsvp-copy" class="canva-text leading-7 mt-5">Esperamos de corazón poder celebrar este día junto a ti.</p>
        <p data-template-id="rsvp-helper" class="canva-text leading-7 mt-4">Si esta vez no puedes acompañarnos, lo entendemos perfectamente; solo te pedimos que nos lo hagas saber.</p>
        <p data-template-id="rsvp-deadline-copy" class="canva-text mt-6">Por favor, confírmanos antes del</p>
-       <p data-template-id="rsvp-deadline" class="canva-text eyebrow mt-2">30 DE OCTUBRE</p>
+       <p data-template-id="rsvp-deadline" class="canva-text eyebrow mt-2">30 DE SEPTIEMBRE</p>
       </div>
       <p id="rsvp-expired-warning" class="rsvp-expired-warning hidden" style="display:none" role="alert" aria-live="assertive">El plazo de confirmación venció.<br>Por favor, comunícate con los novios.</p>
       <p id="rsvp-loading" class="rsvp-loading mt-7">Estamos preparando tu invitación…</p>
@@ -2429,11 +2429,11 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
        </div>
        <p id="form-error" class="hidden text-sm text-[#625F57]" role="alert"></p><button id="submit-rsvp" type="submit" data-template-id="rsvp-button" class="canva-button min-h-14 w-full rounded-full uppercase tracking-[0.15em] text-xs font-semibold"><span data-template-id="rsvp-button-label" class="canva-text">ENVIAR RESPUESTA</span></button>
       </form>
-      <p id="rsvp-edit-note" class="rsvp-edit-note text-center hidden">Si tus planes cambian, puedes modificar tu confirmación hasta el 30 de octubre.</p>
+      <p id="rsvp-edit-note" class="rsvp-edit-note text-center hidden">Si tus planes cambian, puedes modificar tu confirmación hasta el 30 de septiembre.</p>
       <div id="rsvp-success" class="rsvp-success text-center mt-10 rounded-2xl p-8 border border-[#B49558]">
        <i data-lucide="heart" class="mx-auto mb-4 text-[#B49558]" aria-hidden="true"></i>
        <h3 data-template-id="rsvp-success-title" class="canva-text serif">¡Gracias por confirmar!</h3>
-       <p data-template-id="rsvp-success-copy" class="canva-text mt-3 leading-7">Hemos guardado tu confirmación. Puedes modificarla hasta el 30 de octubre.</p>
+       <p data-template-id="rsvp-success-copy" class="canva-text mt-3 leading-7">Hemos guardado tu confirmación. Puedes modificarla hasta el 30 de septiembre.</p>
        <button id="edit-rsvp" type="button" class="canva-button uppercase text-xs font-semibold"><span class="canva-text">MODIFICAR RESPUESTA</span></button>
       </div>
      </div>
@@ -2881,7 +2881,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 
           // Fecha de confirmación global para todas las invitaciones.
           // Se fija también en el HTML para no depender de valores antiguos del RPC o de caché.
-          const confirmationDeadline = "2026-10-30";
+          const confirmationDeadline = "2026-09-30";
 
           const [deadlineYear, deadlineMonth, deadlineDayRaw] = confirmationDeadline.split("-");
           const monthNames = [
