@@ -2805,17 +2805,33 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
 
           // Fecha de confirmación personalizada.
           // Si Supabase devuelve confirmation_deadline, se usa ese valor.
-          // Como respaldo, estos cuatro códigos tienen ampliación hasta el 27/09/2026.
+          // Respaldo local:
+          // - Soledad, Yamil y Erik: hasta el 27/09/2026.
+          // - David y Mary, Armin Aruquipa, Florencio y Angelica: hasta el 29/09/2026.
           const invitationCode = testId.trim();
-          const extendedDeadlineCodes = new Set([
+          const extendedDeadline27Codes = new Set([
             "SP7M4Q8K2V", // Soledad Paredes
             "YS7M4Q9K2V", // Yamil Saravia
-            "AA6N3V8Q4K", // Armin Aruquipa
             "EV9K2M7R5X"  // Erik Veramendi
           ]);
+          const extendedDeadline29Codes = new Set([
+            "AA6N3V8Q4K", // Armin Aruquipa
+            "FA8N4Q2M7K"  // Florencio y Angelica
+          ]);
+          const extendedDeadline29Names = new Set([
+            "David y Mary"
+          ]);
 
-          const confirmationDeadline = invitationRecord.confirmation_deadline ||
-            (extendedDeadlineCodes.has(invitationCode) ? "2026-09-27" : "2026-09-25");
+          let confirmationDeadline = invitationRecord.confirmation_deadline;
+          if (!confirmationDeadline) {
+            if (extendedDeadline29Codes.has(invitationCode) || extendedDeadline29Names.has(displayName.trim())) {
+              confirmationDeadline = "2026-09-29";
+            } else if (extendedDeadline27Codes.has(invitationCode)) {
+              confirmationDeadline = "2026-09-27";
+            } else {
+              confirmationDeadline = "2026-09-25";
+            }
+          }
 
           const [deadlineYear, deadlineMonth, deadlineDayRaw] = confirmationDeadline.split("-");
           const monthNames = [
