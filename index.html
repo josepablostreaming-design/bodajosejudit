@@ -202,6 +202,20 @@
       box-shadow:0 8px 22px rgba(180,35,24,.10);
     }
     .rsvp-expired-warning.hidden { display:none; }
+
+    /* Permitir modificar una confirmación ya enviada mientras el plazo siga vigente */
+    #edit-rsvp {
+      margin-top:1.25rem;
+      min-height:3.25rem;
+      padding:.75rem 1.4rem;
+      border:1px solid rgba(180,149,88,.72)!important;
+      border-radius:999px!important;
+      background:transparent!important;
+      color:#4F5F4B!important;
+      letter-spacing:.12em;
+    }
+    #edit-rsvp .canva-text { color:#4F5F4B!important; }
+    #edit-rsvp.hidden { display:none!important; }
     .rsvp-loading { text-align:center; padding:1rem 0; font-size:.9rem; }
     [data-template-id="venue-link"], #submit-rsvp, #submit-song { background:#4F5F4B !important; color:#F7F3EA !important; }
     #submit-rsvp .canva-text, #submit-song .canva-text { color:#F7F3EA !important; }
@@ -2420,6 +2434,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
        <i data-lucide="heart" class="mx-auto mb-4 text-[#B49558]" aria-hidden="true"></i>
        <h3 data-template-id="rsvp-success-title" class="canva-text serif">¡Gracias por confirmar!</h3>
        <p data-template-id="rsvp-success-copy" class="canva-text mt-3 leading-7">Hemos guardado tu confirmación. Puedes modificarla hasta el 30 de octubre.</p>
+       <button id="edit-rsvp" type="button" class="canva-button uppercase text-xs font-semibold"><span class="canva-text">MODIFICAR RESPUESTA</span></button>
       </div>
      </div>
     </section>
@@ -2764,6 +2779,8 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
       const dietaryInput = document.getElementById("dietary");
       const messageInput = document.getElementById("message");
       const rsvpExpiredWarning = document.getElementById("rsvp-expired-warning");
+      const editRsvpButton = document.getElementById("edit-rsvp");
+      const submitRsvpLabel = submitButton.querySelector('[data-template-id="rsvp-button-label"]');
       let invitationRecord = null;
       let activeConfirmationDeadline = null;
 
@@ -2800,6 +2817,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
             rsvpExpiredWarning.classList.remove("hidden");
             rsvpExpiredWarning.style.display = "block";
           }
+          editRsvpButton?.classList.add("hidden");
         } else {
           if (rsvpExpiredWarning) {
             rsvpExpiredWarning.classList.add("hidden");
@@ -2807,6 +2825,7 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
           }
           rsvpForm.classList.remove("hidden");
           rsvpForm.style.removeProperty("display");
+          editRsvpButton?.classList.remove("hidden");
           rsvpEditNote?.classList.remove("hidden");
           if (rsvpEditNote) rsvpEditNote.style.removeProperty("display");
         }
@@ -2935,6 +2954,9 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
             guestsCountInput.appendChild(option);
           }
           const hasPreviousRsvp = invitationRecord.has_rsvp === true;
+          if (submitRsvpLabel) {
+            submitRsvpLabel.textContent = hasPreviousRsvp ? "GUARDAR CAMBIOS" : "ENVIAR RESPUESTA";
+          }
           attendingInput.value = "";
           guestsCountInput.value = "1";
           guestsCountInput.disabled = true;
@@ -2979,6 +3001,24 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
         }
         syncDietaryAccess();
       });
+
+      if (editRsvpButton) {
+        editRsvpButton.addEventListener("click", () => {
+          if (isConfirmationExpired(activeConfirmationDeadline)) {
+            setRsvpExpiredState(true);
+            rsvpExpiredWarning?.scrollIntoView({ behavior: "smooth", block: "center" });
+            return;
+          }
+
+          successPanel.classList.remove("visible");
+          rsvpForm.classList.remove("submitted", "hidden");
+          rsvpForm.style.removeProperty("display");
+          rsvpEditNote?.classList.remove("hidden");
+          if (rsvpEditNote) rsvpEditNote.style.removeProperty("display");
+          if (submitRsvpLabel) submitRsvpLabel.textContent = "GUARDAR CAMBIOS";
+          rsvpForm.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
 
       rsvpForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -3028,6 +3068,10 @@ body,.canva-button,.itinerary-event{font-family:"DM Sans",sans-serif!important}
           invitationRecord.attending = willAttend;
           invitationRecord.has_rsvp = true;
           invitationRecord.guests_count = requestedGuests;
+          invitationRecord.dietary_requirements = willAttend ? String(formData.get("dietary_requirements") || "").trim() : "";
+          invitationRecord.message = String(formData.get("message") || "").trim();
+          if (submitRsvpLabel) submitRsvpLabel.textContent = "GUARDAR CAMBIOS";
+          editRsvpButton?.classList.remove("hidden");
           syncSongAccess();
           rsvpForm.classList.add("submitted");
           successPanel.classList.add("visible");
